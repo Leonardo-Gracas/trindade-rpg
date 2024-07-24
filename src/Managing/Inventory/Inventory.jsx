@@ -22,7 +22,7 @@ const Inventory = ({ player, setPlayer }) => {
   }
 
   useEffect(() => {
-    fetch('../../../public/ItemDescriber.json')
+    fetch('/trindade-rpg/ItemDescriber.json')
       .then(res => res.json())
       .then(data => {
         setDescriber(data)

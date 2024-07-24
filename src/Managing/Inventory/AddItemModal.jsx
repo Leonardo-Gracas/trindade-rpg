@@ -7,7 +7,7 @@ const AddItemModal = ({ show, setShow, describer, addItem }) => {
     const [items, setItems] = useState(undefined)
 
     useEffect(() => {
-        fetch('../../../public/Items.json')
+        fetch('/trindade-rpg/Items.json')
             .then(res => res.json())
             .then(data => {
                 setItems(data)

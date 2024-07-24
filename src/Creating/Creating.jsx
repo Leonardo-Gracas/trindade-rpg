@@ -13,7 +13,7 @@ function Creating({ setPage }) {
     const cookies = new Cookies()
 
     useEffect(() => {
-        fetch('/player.json', {
+        fetch('/trindade-rpg/player.json', {
             method: 'GET'
         }).then(res => {
             return res.json()
