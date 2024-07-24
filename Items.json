@@ -1,0 +1,106 @@
+{
+    "armas": [
+        {
+            "nome": "Lança Leve",
+            "categoria": 0,
+            "tipo": "Lâmina",
+            "peso": 0, 
+            "tamanho": 1, 
+            "uso": "destreza",
+            "calcDamage": [
+                [
+                    "destreza",
+                    0.5
+                ],
+                [
+                    "pericia",
+                    0.33
+                ]
+            ]
+        },
+        {
+            "nome": "Adaga",
+            "categoria": 0,
+            "tipo": "Punhal",
+            "peso": 0, 
+            "tamanho": 0, 
+            "uso": "furtividade",
+            "calcDamage": [
+                [
+                    "furtividade",
+                    0.33
+                ],
+                [
+                    "pericia",
+                    0.33
+                ]
+            ]
+        },
+        {
+            "nome": "Espada Média",
+            "categoria": 0,
+            "tipo": "Lâmina",
+            "peso": 1, 
+            "tamanho": 1, 
+            "uso": "destreza",
+            "calcDamage": [
+                [
+                    "destreza",
+                    0.5
+                ],
+                [
+                    "pericia",
+                    0.5
+                ]
+            ]
+        },
+        {
+            "nome": "Clava",
+            "categoria": 0,
+            "tipo": "Martelo",
+            "peso": 2, 
+            "tamanho": 1, 
+            "uso": "forca",
+            "calcDamage": [
+                [
+                    "forca",
+                    1
+                ],
+                [
+                    "pericia",
+                    0.5
+                ]
+            ]
+        },
+        {
+            "nome": "Martelo de Guerra",
+            "categoria": 0,
+            "tipo": "Martelo",
+            "peso": 2, 
+            "tamanho": 2, 
+            "uso": "forca",
+            "calcDamage": [
+                [
+                    "forca",
+                    2
+                ],
+                [
+                    "pericia",
+                    0.5
+                ]
+            ]
+        }
+    ],
+    "utils": [
+        {
+            "nome": "Tocha",
+            "descricao": "Tocha pequena que serve para iluminar locais escuros.",
+            "quantidade": 1
+        },
+        {
+            "nome": "Corda",
+            "descricao": "Corda de 30m com fibra resistente.",
+            "quantidade": 1
+        }
+    ]
+}
