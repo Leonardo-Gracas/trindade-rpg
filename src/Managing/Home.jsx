@@ -81,9 +81,9 @@ const Home = ({ content, setPage }) => {
                     <CardHeader>
                         <h2>Inventário</h2>
                     </CardHeader>
-                    {/* <CardBody className='text-start row pt-1'>
+                    <CardBody className='text-start row pt-1'>
                         <Inventory player={player} setPlayer={setPlayer} />
-                    </CardBody> */}
+                    </CardBody>
                 </Card>
             </div>
         </div>
