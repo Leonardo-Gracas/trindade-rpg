@@ -1,0 +1,154 @@
+{
+    "categories": [
+        "Arma",
+        "Escudo"
+    ],
+    "damageRanges": [
+        {
+            "min": 1,
+            "max": 2,
+            "result": "1 (1)"
+        },
+        {
+            "min": 3,
+            "max": 6,
+            "result": "1d4 (4)"
+        },
+        {
+            "min": 7,
+            "max": 10,
+            "result": "1d6 (6)"
+        },
+        {
+            "min": 11,
+            "max": 14,
+            "result": "1d8 (8)"
+        },
+        {
+            "min": 15,
+            "max": 18,
+            "result": "1d10 (10)"
+        },
+        {
+            "min": 19,
+            "max": 22,
+            "result": "1d12 (12)"
+        },
+        {
+            "min": 23,
+            "max": 26,
+            "result": "1d12 + 1d4 (12)"
+        },
+        {
+            "min": 27,
+            "max": 32,
+            "result": "1d12 + 1d6 (12)"
+        },
+        {
+            "min": 33,
+            "max": 36,
+            "result": "1d12 + 1d8 (14)"
+        },
+        {
+            "min": 37,
+            "max": 40,
+            "result": "1d12 + 1d10 (14)"
+        },
+        {
+            "min": 41,
+            "max": "infinity",
+            "result": "2d12 (16)"
+        }
+    ],
+    "armas": {
+        "pesos": [
+            "leve",
+            "equilibrada",
+            "pesada"
+        ],
+        "tamanhos": [
+            "Pequena",
+            "Media",
+            "Grande"
+        ],
+        "acoes": [
+            {
+                "nome": "Ataque extra",
+                "esforco": 0,
+                "calcPeso": [
+                    0.5,
+                    1.5,
+                    3
+                ],
+                "calcTamanho": [
+                    0.5,
+                    1,
+                    2
+                ]
+            },
+            {
+                "nome": "Ataque em área",
+                "esforco": 0,
+                "calcPeso": [
+                    0.5,
+                    0.5,
+                    1
+                ],
+                "calcTamanho": [
+                    3,
+                    1.5,
+                    1
+                ]
+            },
+            {
+                "nome": "Ataque concentrado",
+                "esforco": 0,
+                "calcPeso": [
+                    2,
+                    1,
+                    0.5
+                ],
+                "calcTamanho": [
+                    3,
+                    1.5,
+                    1
+                ]
+            },
+            {
+                "nome": "Quebra-Guarda",
+                "esforco": 0,
+                "calcPeso": [
+                    3,
+                    2,
+                    1
+                ],
+                "calcTamanho": [
+                    3,
+                    2,
+                    1
+                ]
+            }
+        ],
+        "molde": {
+            "nome": "",
+            "categoria": 0,
+            "peso": 0,
+            "tamanho": 0,
+            "uso": "",
+            "dano": 0,
+            "calcDamage": [
+                [
+                    "",
+                    0.0
+                ],
+                [
+                    "",
+                    0.0
+                ]
+            ],
+            "acoes": [
+                
+            ]
+        }
+    }
+}

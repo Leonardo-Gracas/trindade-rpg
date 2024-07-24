@@ -1,0 +1,87 @@
+{
+    "nome": "",
+    "idade": 0,
+    "descricao": "",
+    "hpTotal": 0,
+    "hpAtual": 0,
+    "esforcoTotal": 0,
+    "esforcoAtual": 0,
+    "pericia": 0,
+    "main": {
+        "estudo": 0,
+        "atletismo": 0,
+        "presenca": 0
+    },
+    "corpoBase": {
+        "total": 0,
+        "forca": 0,
+        "resistencia": 0,
+        "reflexo": 0,
+        "pontaria": 0,
+        "destreza": 0,
+        "furtividade": 0,
+        "mobilidade": 0
+    },
+    "corpo": {
+        "forca": 0,
+        "resistencia": 0,
+        "reflexo": 0,
+        "pontaria": 0,
+        "destreza": 0,
+        "furtividade": 0,
+        "mobilidade": 0
+    },
+    "interacao": {
+        "persuasao": 0,
+        "inteligencia": 0,
+        "investigacao": 0,
+        "intuicao": 0,
+        "fe": 0,
+        "performance": 0
+    },
+    "formacoes": [],
+    "habilidades": [
+        {
+            "nome": "",
+            "descricao": ""
+        }
+    ],
+    "inventario": [
+        {
+            "nome": "Lança Leve",
+            "categoria": 0,
+            "tipo": "Lâmina",
+            "peso": 0,
+            "tamanho": 1,
+            "uso": "destreza",
+            "calcDamage": [
+                [
+                    "destreza",
+                    0.5
+                ],
+                [
+                    "pericia",
+                    0.33
+                ]
+            ]
+        },
+        {
+            "nome": "Adaga",
+            "categoria": 0,
+            "tipo": "Punhal",
+            "peso": 0,
+            "tamanho": 0,
+            "uso": "furtividade",
+            "calcDamage": [
+                [
+                    "furtividade",
+                    0.33
+                ],
+                [
+                    "pericia",
+                    0.33
+                ]
+            ]
+        }
+    ]
+}
