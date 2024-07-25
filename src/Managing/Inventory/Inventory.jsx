@@ -3,6 +3,7 @@ import { CardGroup, ListGroup, ListGroupItem, Modal, ModalHeader } from 'react-b
 import AddItemModal from './AddItemModal'
 import Arma from './Weapon/Arma'
 import { clone, cloneDeep } from 'lodash'
+import Util from './Utils/Util'
 const Inventory = ({ player, setPlayer }) => {
   const [show, setShow] = useState(false)
   const [items, setItems] = useState([])
@@ -35,6 +36,8 @@ const Inventory = ({ player, setPlayer }) => {
     let formatedItems = player.inventario.map((item, key) => {
       if (item.categoria == 0) {
         return <Arma item={item} describer={describer} player={player} key={key} id={key} removeItem={removeItem} />
+      } else if (item.categoria == 1){
+        return <Util item={item} key={key} id={key} removeItem={removeItem} />
       }
     })
     setItems(formatedItems)

@@ -52,6 +52,7 @@ const SetFormacoes = ({ player, update, rollback, finish }) => {
                     </tbody>
                 </table>
             </div>
+            <hr />
             <div>
                 <button className='btn btn-primary' onClick={() => setShow(true)}>
                     Adicionar formação

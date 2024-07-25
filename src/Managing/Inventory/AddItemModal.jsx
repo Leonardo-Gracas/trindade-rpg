@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Modal, ModalBody, ModalHeader, ModalTitle, Tab, Tabs } from 'react-bootstrap'
 import AddArma from './Weapon/AddArma'
 import Create from './Create/Create'
+import AddUtil from './Utils/AddUtil'
 
 const AddItemModal = ({ show, setShow, describer, addItem }) => {
     const [items, setItems] = useState(undefined)
@@ -22,21 +23,27 @@ const AddItemModal = ({ show, setShow, describer, addItem }) => {
             <ModalBody className='w-100'>
                 <Tabs>
                     <Tab eventKey={"Create"} title={"Criar"}>
-                        <Create />
+                        <Create addItem={addItem} />
                     </Tab>
                     <Tab eventKey={"armas"} title={"Armas"}>
                         <div className='row row-gap-1'>
                             {items == undefined ? <></>
                                 : items.armas.map((item, i) => {
                                     return <div key={i} className='col-3 g-2'>
-                                        <AddArma item={item} describer={describer} add={addItem}/>
+                                        <AddArma item={item} describer={describer} add={addItem} />
                                     </div>
                                 })}
                         </div>
-
                     </Tab>
                     <Tab eventKey={"utilitários"} title={"Utilitários"}>
-
+                        <div className='row row-gap-1'>
+                            {items == undefined ? <></>
+                                : items.utils.map((item, i) => {
+                                    return <div key={i} className='col-3 g-2'>
+                                        <AddUtil item={item} describer={describer} add={addItem} />
+                                    </div>
+                                })}
+                        </div>
                     </Tab>
                 </Tabs>
             </ModalBody>

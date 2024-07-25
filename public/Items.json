@@ -93,11 +93,13 @@
     ],
     "utils": [
         {
+            "categoria": 1,
             "nome": "Tocha",
             "descricao": "Tocha pequena que serve para iluminar locais escuros.",
             "quantidade": 1
         },
         {
+            "categoria": 1,
             "nome": "Corda",
             "descricao": "Corda de 30m com fibra resistente.",
             "quantidade": 1

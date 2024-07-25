@@ -62,15 +62,15 @@ const SetMain = ({ player, update, rollback }) => {
           {maxPoints < 0 ? <p className='text-danger'>Limite excedido</p> : false}
           <Form className='text-start'>
             <FormGroup className='mb-3'>
-              <FormLabel>Estudo</FormLabel>
+              <FormLabel>Estudo (Governa as formações do personagem)</FormLabel>
               <FormControl required type='number' name='estudo' placeholder='Estudo' onChange={handleChange} defaultValue={content.estudo} />
             </FormGroup>
             <FormGroup className='mb-3'>
-              <FormLabel>Atletismo</FormLabel>
+              <FormLabel>Atletismo (Governa os atributos físicos e motores do personagem)</FormLabel>
               <FormControl required type='number' name='atletismo' placeholder='Atletismo' onChange={handleChange} defaultValue={content.atletismo} />
             </FormGroup>
             <FormGroup>
-              <FormLabel>Presença</FormLabel>
+              <FormLabel>Presença (Governa as competências sociais, intelectuais e mágicas do personagem)</FormLabel>
               <FormControl required type='number' name='presenca' placeholder='Presença' onChange={handleChange} defaultValue={content.presenca} />
             </FormGroup>
           </Form>

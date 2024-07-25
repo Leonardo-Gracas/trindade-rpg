@@ -33,6 +33,10 @@ const SetCorpoBase = ({ player, update, rollback }) => {
         "mobilidade": media(content.furtividade, content.forca) + content.mobilidade
     }
 
+    const hp = final.forca + final.resistencia + 4
+    const esforco = final.mobilidade + final.furtividade + 1
+    const pericia = final.destreza + final.pontaria + final.reflexo
+
     const totalPoints = Object.values(content).reduce((acc, curr) => acc + curr, 0) - content.total
     const maxPoints = content.total - totalPoints
 
@@ -63,9 +67,6 @@ const SetCorpoBase = ({ player, update, rollback }) => {
     }
 
     const handleSubmit = () => {
-        // const totalPoints = Object.values(content).reduce((acc, curr) => acc + curr, 0) - content.total
-        // const maxPoints = content.total - totalPoints
-
         if (maxPoints < 0) {
             toast.error("O limite total de pontos foi excedido")
             return
@@ -84,11 +85,11 @@ const SetCorpoBase = ({ player, update, rollback }) => {
                 corpo: {
                     ...final
                 },
-                hpTotal: final.forca + final.resistencia + 4,
-                hpAtual: final.forca + final.resistencia + 4,
-                esforcoTotal: final.mobilidade + final.furtividade + 1,
-                esforcoAtual: final.mobilidade + final.furtividade + 1,
-                pericia: final.destreza + final.pontaria + final.reflexo
+                hpTotal: hp,
+                hpAtual: hp,
+                esforcoTotal: esforco,
+                esforcoAtual: esforco,
+                pericia: pericia
             }
         })
     }
@@ -101,7 +102,13 @@ const SetCorpoBase = ({ player, update, rollback }) => {
                 </CardHeader>
                 <CardBody className='mx-2 mb-1'>
                     <h4>Pontos disponíveis: {maxPoints}</h4>
+                    <p className='text-secondary'>Cada ponto distribuido em um atributo passa 0.5 para cada atributo adjacente</p>
                     {maxPoints < 0 ? <p className='text-danger'>Limite excedido</p> : false}
+                    <div>
+                        <p>Hp: {hp}</p>
+                        <p>Esforço: {esforco}</p>
+                        <p>Perícia: {pericia}</p>
+                    </div>
                     <Form className='text-start'>
                         {
                             Object.keys(content).map((prop, i) => {

@@ -59,10 +59,10 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
     }
 
     const handleChange = (e) => {
-        if(e.target.name == 'nome'){
-            
+        if (e.target.name == 'nome') {
+
             setContent({
-                ...content, 
+                ...content,
                 nome: e.target.value
             })
             return
@@ -85,7 +85,7 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
             e.target.value = 0
         }
 
-        
+
         const newContent = {
             ...content,
             [e.target.name]: value
@@ -116,6 +116,13 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         handleClose()
     }
 
+    let options = [
+        <option value={0}>Selecione o nível da formação</option>,
+        <option value={1}>Iniciante</option>,
+        <option value={2}>Especialista</option>,
+        <option value={3}>Mestre</option>,
+    ]
+
     return (
         <Modal show={show}>
             <ModalHeader closeButton onHide={handleClose}>
@@ -130,10 +137,15 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
                     <FormGroup className='mb-2'>
                         <FormLabel>Nível:</FormLabel>
                         <FormSelect required name='nivel' onChange={setNivel} def>
-                            <option value={0}>Selecione o nível da formação</option>
-                            <option value={1}>Iniciante</option>
-                            <option value={2}>Especialista</option>
-                            <option value={3}>Mestre</option>
+                            {options.map((item, i) => {
+                                if(i > player.main.estudo){
+                                    return
+                                }
+
+                                return item
+                            })
+                            }
+
                         </FormSelect>
                     </FormGroup>
                     {content.nivel == 0
