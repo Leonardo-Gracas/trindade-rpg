@@ -47,41 +47,5 @@
         }
     ],
     "inventario": [
-        {
-            "nome": "Lança Leve",
-            "categoria": 0,
-            "tipo": "Lâmina",
-            "peso": 0,
-            "tamanho": 1,
-            "uso": "destreza",
-            "calcDamage": [
-                [
-                    "destreza",
-                    0.5
-                ],
-                [
-                    "pericia",
-                    0.33
-                ]
-            ]
-        },
-        {
-            "nome": "Adaga",
-            "categoria": 0,
-            "tipo": "Punhal",
-            "peso": 0,
-            "tamanho": 0,
-            "uso": "furtividade",
-            "calcDamage": [
-                [
-                    "furtividade",
-                    0.33
-                ],
-                [
-                    "pericia",
-                    0.33
-                ]
-            ]
-        }
     ]
 }
