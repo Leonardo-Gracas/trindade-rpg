@@ -18,8 +18,8 @@ const Home = ({ content, setPage }) => {
 
 
     return (
-        <div className='row'>
-            <div className='px-1 col-3' style={{ width: '28rem', height: '50rem' }}>
+        <div className='row gy-3'>
+            <div className='px-1 col-3' style={{ width: '28rem'}}>
                 <Card className='p-0 h-100'>
                     <CardHeader>
                         <div className='d-flex justify-content-between'>
@@ -27,17 +27,17 @@ const Home = ({ content, setPage }) => {
                             <button className='btn-close pt-3' onClick={handleClose} />
                         </div>
                     </CardHeader>
-                    <CardBody className='text-start row pt-1'>
+                    <CardBody className='text-start row pt-1 d-flex justify-content-center'>
                         <div className='row' id='attributes'>
-                            <div className='col-3 d-flex flex-column pt-0' style={{ minWidth: '27rem' }}>
-                                <CardGroup id='Status' className='d-flex justify-content-between mt-3'>
-                                    <h5 className='text-success'>HP: {Math.floor(player.hpAtual)}/{Math.floor(player.hpTotal)}</h5>
-                                    <h5 className='text-primary'>Esforço: {Math.floor(player.esforcoAtual)}/{Math.floor(player.esforcoTotal)}</h5>
-                                    <h5 className='text'>Perícia: {player.pericia}</h5>
+                            <div className='col-3 d-flex flex-column pt-0 w-100'>
+                                <CardGroup id='Status' className='row mt-3'>
+                                    <h5 className='text-success col-4'>HP: {Math.floor(player.hpAtual)}/{Math.floor(player.hpTotal)}</h5>
+                                    <h5 className='text-primary col-4'>Esforço: {Math.floor(player.esforcoAtual)}/{Math.floor(player.esforcoTotal)}</h5>
+                                    <h5 className='text col-4'>Perícia: {player.pericia}</h5>
                                 </CardGroup>
                                 <hr />
                                 <div className='row w-100'>
-                                    <CardGroup id='Corpo' className='d-flex flex-column col-md-6'>
+                                    <CardGroup id='Corpo' className='d-flex flex-column col-md-6 mb-3'>
                                         <h3 className='mb-0'>Corpo</h3>
                                         <div className='mb-3'>
                                             <p className='my-2'>força: {Math.floor(player.corpo.forca)}</p>

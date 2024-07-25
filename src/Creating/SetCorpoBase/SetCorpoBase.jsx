@@ -95,8 +95,8 @@ const SetCorpoBase = ({ player, update, rollback }) => {
     }
 
     return (
-        <div className='d-flex flex-column'>
-            <Card className='p-0' style={{ width: '400px' }}>
+        <div className='d-flex flex-column' style={{maxWidth: '100%'}}>
+            <Card className='p-0 w-100'>
                 <CardHeader>
                     <CardTitle>Corpo Base</CardTitle>
                 </CardHeader>
@@ -104,7 +104,7 @@ const SetCorpoBase = ({ player, update, rollback }) => {
                     <h4>Pontos disponíveis: {maxPoints}</h4>
                     <p className='text-secondary'>Cada ponto distribuido em um atributo passa 0.5 para cada atributo adjacente</p>
                     {maxPoints < 0 ? <p className='text-danger'>Limite excedido</p> : false}
-                    <div>
+                    <div className='d-flex flex-column'>
                         <p>Hp: {hp}</p>
                         <p>Esforço: {esforco}</p>
                         <p>Perícia: {pericia}</p>
@@ -134,7 +134,7 @@ const SetCorpoBase = ({ player, update, rollback }) => {
                     </Form>
                 </CardBody>
             </Card>
-            <div className='d-flex justify-content-between mt-3 px-3 w-100'>
+            <div className='d-flex justify-content-between mt-3 w-100'>
                 <button className='btn btn-outline-danger' style={{ width: '150px' }} onClick={rollback}>Retornar</button>
                 <button className='btn btn-primary' style={{ width: '150px' }} onClick={handleSubmit}>Próximo</button>
             </div>

@@ -29,7 +29,7 @@ const AddItemModal = ({ show, setShow, describer, addItem }) => {
                         <div className='row row-gap-1'>
                             {items == undefined ? <></>
                                 : items.armas.map((item, i) => {
-                                    return <div key={i} className='col-3 g-2'>
+                                    return <div key={i} className='col-md-3 g-2'>
                                         <AddArma item={item} describer={describer} add={addItem} />
                                     </div>
                                 })}
@@ -39,7 +39,7 @@ const AddItemModal = ({ show, setShow, describer, addItem }) => {
                         <div className='row row-gap-1'>
                             {items == undefined ? <></>
                                 : items.utils.map((item, i) => {
-                                    return <div key={i} className='col-3 g-2'>
+                                    return <div key={i} className='col-md-3 g-2'>
                                         <AddUtil item={item} describer={describer} add={addItem} />
                                     </div>
                                 })}

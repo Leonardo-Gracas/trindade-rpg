@@ -52,8 +52,8 @@ const SetMain = ({ player, update, rollback }) => {
   }
 
   return (
-    <div className='d-flex flex-column align-items-start'>
-      <Card className='p-0' style={{ width: '400px' }}>
+    <div className='d-flex flex-column align-items-start' style={{maxWidth: '100%'}}>
+      <Card className='p-0'>
         <CardHeader>
           <CardTitle>Trindade</CardTitle>
         </CardHeader>

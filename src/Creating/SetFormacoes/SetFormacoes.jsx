@@ -34,7 +34,7 @@ const SetFormacoes = ({ player, update, rollback, finish }) => {
 
     return (
         <div>
-            <div className='overflow-y-auto' style={{height: '30rem'}}>
+            <div className='overflow-y-auto' style={{height: '30rem', maxHeight: '50%'}}>
                 <table className='table table-table-striped'>
                     <thead>
                         <tr>

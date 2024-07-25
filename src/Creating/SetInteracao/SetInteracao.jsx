@@ -68,8 +68,8 @@ const SetInteracao = ({ player, update, rollback }) => {
     }
 
     return (
-        <div className='d-flex flex-column'>
-            <Card className='p-0' style={{ width: '400px' }}>
+        <div className='d-flex flex-column' style={{maxWidth: '100%'}}>
+            <Card className='p-0 w-100'>
                 <CardHeader>
                     <CardTitle>Interação</CardTitle>
                 </CardHeader>
@@ -100,8 +100,8 @@ const SetInteracao = ({ player, update, rollback }) => {
                     </Form>
                 </CardBody>
             </Card>
-            <div className='d-flex justify-content-between mt-3 px-3 w-100'>
-                <button className='btn btn-outline-danger' style={{ width: '150px' }} onClick={rollback}>Retornar</button>
+            <div className='d-flex justify-content-between mt-3 w-100'>
+                <button className='btn btn-outline-danger me-1' style={{ width: '150px' }} onClick={rollback}>Retornar</button>
                 <button className='btn btn-primary' style={{ width: '150px' }} onClick={handleSubmit}>Próximo</button>
             </div>
         </div>
