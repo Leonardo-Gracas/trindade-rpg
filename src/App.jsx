@@ -11,10 +11,16 @@ function App() {
   const [players, setPlayers] = useState([])
   const [page, setPage] = useState(0)
   const [openUser, setOpenUser] = useState(undefined)
-  const cookies = new Cookies()
 
   useEffect(() => {
-    let allPlayers = cookies.getAll()
+    let allPlayers = [],
+      keys = Object.keys(localStorage),
+      i = keys.length
+
+      while(i --){
+        allPlayers.push(JSON.parse(localStorage.getItem(keys[i])))
+      }
+
     setPlayers(allPlayers)
   }, [])
 
@@ -29,7 +35,7 @@ function App() {
 
   const updatePage = (index) => {
     setPage(index)
-    let allPlayers = cookies.getAll()
+    let allPlayers = { ...localStorage }
     setPlayers(allPlayers)
   }
 
@@ -45,11 +51,11 @@ function App() {
         </button>
         {Object.keys(players).map((item, i) => {
           return <button key={i}
-          className='btn btn-outline-dark mb-3'
-          style={{ width: '300px' }}
-          onClick={() => openTab(players[item])}>
-          {players[item].nome}
-        </button>
+            className='btn btn-outline-dark mb-3'
+            style={{ width: '300px' }}
+            onClick={() => openTab(players[item])}>
+            {players[item].nome}
+          </button>
         })}
       </div>
     </div>,
@@ -58,10 +64,10 @@ function App() {
   ]
 
   const openTab = (player) => {
-    setOpenUser(<Home content={player} setPage={updatePage}/>)
+    setOpenUser(<Home content={player} setPage={updatePage} />)
     setPage(2)
   }
-  
+
   return (
     pages[page]
   )

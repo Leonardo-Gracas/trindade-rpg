@@ -16,10 +16,13 @@ const Inventory = ({ player, setPlayer }) => {
     var newInventory = player.inventario
     newInventory.splice(key, 1)
 
-    setPlayer({
+    let result = {
       ...player,
       inventario: clone(newInventory)
-    })
+    }
+
+    setPlayer(result)
+    localStorage.setItem(player.nome, JSON.stringify(result))
   }
 
   useEffect(() => {
@@ -36,7 +39,7 @@ const Inventory = ({ player, setPlayer }) => {
     let formatedItems = player.inventario.map((item, key) => {
       if (item.categoria == 0) {
         return <Arma item={item} describer={describer} player={player} key={key} id={key} removeItem={removeItem} />
-      } else if (item.categoria == 1){
+      } else if (item.categoria == 1) {
         return <Util item={item} key={key} id={key} removeItem={removeItem} />
       }
     })
@@ -48,13 +51,16 @@ const Inventory = ({ player, setPlayer }) => {
       return
     }
 
-    setPlayer({
+    let result = {
       ...player,
       inventario: [
         ...player.inventario,
         item
       ]
-    })
+    }
+
+    setPlayer(result)
+    localStorage.setItem(player.nome, JSON.stringify(result))
 
     setShow(false)
   }
@@ -65,7 +71,7 @@ const Inventory = ({ player, setPlayer }) => {
         <div style={{ height: '40rem', minHeight: '80%', overflowY: 'auto' }}>
           {items}
         </div>
-        <div style={{height: '10%'}}>
+        <div style={{ height: '10%' }}>
           <hr className='mt-0' />
           <button className='btn btn-success w-100' style={{ height: '40px' }} onClick={() => setShow(true)}>Adicionar</button>
         </div>

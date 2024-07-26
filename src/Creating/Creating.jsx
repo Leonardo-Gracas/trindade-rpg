@@ -10,7 +10,6 @@ import SetFormacoes from './SetFormacoes/SetFormacoes'
 function Creating({ setPage }) {
     const [player, setPlayer] = useState({})
     const [index, setIndex] = useState(0)
-    const cookies = new Cookies()
 
     useEffect(() => {
         fetch('/trindade-rpg/player.json', {
@@ -33,7 +32,7 @@ function Creating({ setPage }) {
     }
 
     const finish = () => {
-        cookies.set(player.nome, JSON.stringify(player))
+        localStorage.setItem(player.nome, JSON.stringify(player))
         setPage(0)
     }
 
