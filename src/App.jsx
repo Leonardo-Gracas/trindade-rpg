@@ -17,9 +17,9 @@ function App() {
       keys = Object.keys(localStorage),
       i = keys.length
 
-      while(i --){
-        allPlayers.push(JSON.parse(localStorage.getItem(keys[i])))
-      }
+    while (i--) {
+      allPlayers.push(JSON.parse(localStorage.getItem(keys[i])))
+    }
 
     setPlayers(allPlayers)
   }, [])
@@ -39,23 +39,34 @@ function App() {
     setPlayers(allPlayers)
   }
 
+  const deletePlayer = (name) => {
+    if(confirm(`Deseja mesmo excluir o personagem "${name}" para sempre?`) == false){
+      return
+    }
+    localStorage.removeItem(name)
+    window.location.reload()
+  }
+
   var pages = [
     <div className='w-100 h-100 d-flex flex-column justify-content-center'>
       <h1>RPG Trindade</h1>
       <div className='d-flex flex-column align-items-center mt-5'>
         <button
           className='btn btn-outline-dark mb-3'
-          style={{ width: '300px' }}
+          style={{ width: '20rem' }}
           onClick={() => setPage(1)}>
           Criar novo personagem
         </button>
         {Object.keys(players).map((item, i) => {
-          return <button key={i}
-            className='btn btn-outline-dark mb-3'
-            style={{ width: '300px' }}
-            onClick={() => openTab(players[item])}>
-            {players[item].nome}
-          </button>
+          return <div className='d-flex' style={{ width: '20rem' }}>
+            <button key={i}
+              className='btn btn-outline-dark mb-3 w-100'
+              onClick={() => openTab(players[item])}
+            >
+              {players[item].nome}
+            </button>
+            <button className='btn btn-danger ms-2 mb-3' onClick={() => deletePlayer(players[item].nome)}>X</button>
+          </div>
         })}
       </div>
     </div>,
