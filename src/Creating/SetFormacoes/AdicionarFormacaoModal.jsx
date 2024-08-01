@@ -1,38 +1,34 @@
-import React, { useState } from 'react'
+import { clone, cloneDeep } from 'lodash'
+import React, { useEffect, useState } from 'react'
 import { Form, FormControl, FormGroup, FormLabel, FormSelect, Modal, ModalBody, ModalHeader, ModalTitle } from 'react-bootstrap'
 import { toast } from 'sonner'
 
 const AdicionarFormacaoModal = ({ player, update, show, close }) => {
     const [content, setContent] = useState({
-        total: undefined,
         nome: "",
         nivel: 0,
-        diagnostico: 0,
-        execucao: 0,
-        preparo: 0,
-        tecnicas: [
+        competencia: "",
+        habilidades: [
             {
                 nome: "",
-                descricao: "",
-                procedimento: {}
+                descricao: ""
             }
         ]
     })
 
     const maxLevel = player.main.estudo
-    const totalPoints = content.diagnostico + content.execucao + content.preparo
-    const maxPoints = content.total == undefined ? 0 : content.total - totalPoints
-    const maxSingle = player.main.estudo + 3
 
     const handleClose = () => {
         setContent({
-            total: 0,
             nome: "",
             nivel: 0,
-            diagnostico: 0,
-            execucao: 0,
-            preparo: 0,
-            tecnicas: []
+            competencia: "",
+            habilidades: [
+                {
+                    nome: "",
+                    descricao: ""
+                }
+            ]
         })
         close()
     }
@@ -48,72 +44,42 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
 
         e.target.disabled = true
 
+        const habilityCount = (value - 1) * 2
+
+        let newContent = content
+        for (let i = 0; i < habilityCount; i++) {
+            newContent.habilidades[i] = {
+                nome: "",
+                descricao: ""
+            }
+        }
+
         setContent({
-            ...content,
-            nivel: value,
-            total: total,
-            diagnostico: 0,
-            execucao: 0,
-            preparo: 0
+            ...newContent,
+            nivel: value
         })
     }
 
     const handleChange = (e) => {
-        if (e.target.name == 'nome') {
+        let name = e.target.name
+        let value = e.target.value
 
-            setContent({
-                ...content,
-                nome: e.target.value
-            })
-            return
-        }
-
-        let value = parseInt(e.target.value)
-        if (isNaN(value)) {
-            value = 0
-            e.target.value = 0
-        }
-
-        if (value > maxSingle) {
-            e.target.value = maxSingle
-            value = maxSingle
-            toast.error('Limite para cada linha é ' + maxSingle)
-        }
-
-        if (value < 0) {
-            value = 0
-            e.target.value = 0
-        }
-
-
-        const newContent = {
+        setContent({
             ...content,
-            [e.target.name]: value
-        }
-        setContent(newContent)
+            [name]: value
+        })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (maxPoints > 0) {
-            toast.warning('Ainda restam pontos')
-            return
-        }
+        let newPlayer = player
+        newPlayer.formacoes.push(content)
 
-        if (maxPoints < 0) {
-            toast.error('Limite de pontos ultrapassado')
-            return
-        }
-
-        update(prev => {
-            let obj = {
-                ...prev,
-                formacoes: [...prev.formacoes, content]
-            }
-            return obj
-        })
-        handleClose()
+        update((prev) => ({
+            ...newPlayer
+        }))
+        close()
     }
 
     let options = [
@@ -122,6 +88,24 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         <option value={2}>Especialista</option>,
         <option value={3}>Mestre</option>,
     ]
+
+    var habilityForms = []
+
+    const handleHabilityChange = (e, index) => {
+        let name = e.target.name
+        let value = e.target.value
+
+        let habs = content.habilidades
+
+        habs[index][name] = value
+
+        setContent(prev => ({
+            ...prev,
+            habilidades: habs
+        }))
+    }
+
+    console.log(content)
 
     return (
         <Modal show={show}>
@@ -138,32 +122,32 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
                         <FormLabel>Nível:</FormLabel>
                         <FormSelect required name='nivel' onChange={setNivel} def>
                             {options.map((item, i) => {
-                                if(i > player.main.estudo){
+                                if (i > player.main.estudo) {
                                     return
                                 }
-
                                 return item
                             })
                             }
-
                         </FormSelect>
                     </FormGroup>
                     {content.nivel == 0
                         ? true
                         : <>
-                            <h2>Pontos disponíveis: {maxPoints}</h2>
-                            <FormGroup className='mb-2'>
-                                <FormLabel>Preparo:</FormLabel>
-                                <FormControl type='number' name='preparo' onChange={handleChange} />
-                            </FormGroup>
-                            <FormGroup className='mb-2'>
-                                <FormLabel>Diagnóstico:</FormLabel>
-                                <FormControl type='number' name='diagnostico' onChange={handleChange} />
-                            </FormGroup>
-                            <FormGroup>
-                                <FormLabel>Execução:</FormLabel>
-                                <FormControl type='number' name='execucao' onChange={handleChange} />
-                            </FormGroup>
+                            <div className='overflow-y-auto' style={{ height: '15rem' }}>
+                                <FormGroup className='mb-2'>
+                                    <FormLabel>Competência:</FormLabel>
+                                    <FormControl name='competencia' onChange={handleChange} />
+                                </FormGroup>
+                                <FormLabel>Habilidades:</FormLabel>
+                                {content.habilidades.map((item, key) => {
+                                    return <FormGroup className='mb-1' key={key}>
+                                        <FormLabel>Nome</FormLabel>
+                                        <FormControl name='nome' value={item.nome} onChange={(e) => handleHabilityChange(e, key)} />
+                                        <FormLabel>Descrição</FormLabel>
+                                        <FormControl as={'textarea'} value={item.descricao} name='descricao' onChange={(e) => handleHabilityChange(e, key)} />
+                                    </FormGroup>
+                                })}
+                            </div>
                             <div className='text-end pt-3'>
                                 <button className='btn btn-primary' type='submit'>Adicionar</button>
                             </div>

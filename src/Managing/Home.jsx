@@ -19,7 +19,7 @@ const Home = ({ content, setPage }) => {
 
     return (
         <div className='row gy-3'>
-            <div className='px-1 col-3' style={{ width: '28rem'}}>
+            <div className='px-1 col-3' style={{ width: '28rem' }}>
                 <Card className='p-0 h-100'>
                     <CardHeader>
                         <div className='d-flex justify-content-between'>
@@ -37,29 +37,33 @@ const Home = ({ content, setPage }) => {
                                 </CardGroup>
                                 <hr />
                                 <div className='row w-100'>
-                                    <CardGroup id='Corpo' className='d-flex flex-column col-md-6 mb-3'>
-                                        <h3 className='mb-0'>Corpo</h3>
-                                        <div className='mb-3'>
-                                            <p className='my-2'>força: {Math.floor(player.corpo.forca)}</p>
-                                            <p className='my-2'>resistência: {Math.floor(player.corpo.resistencia)}</p>
-                                            <p className='my-2'>reflexo: {Math.floor(player.corpo.reflexo)}</p>
-                                            <p className='my-2'>pontaria: {Math.floor(player.corpo.pontaria)}</p>
-                                            <p className='my-2'>destreza: {Math.floor(player.corpo.destreza)}</p>
-                                            <p className='my-2'>furtividade: {Math.floor(player.corpo.furtividade)}</p>
-                                            <p className='my-2'>mobilidade: {Math.floor(player.corpo.mobilidade)}</p>
+                                    <CardGroup id='Corpo' className='d-flex justify-content-between mb-3'>
+                                        <div>
+                                            <h3 className='mb-0'>Corpo</h3>
+                                            <div className='mb-3'>
+                                                <p className='my-2'>força: {Math.floor(player.corpo.forca)}</p>
+                                                <p className='my-2'>resistência: {Math.floor(player.corpo.resistencia)}</p>
+                                                <p className='my-2'>reflexo: {Math.floor(player.corpo.reflexo)}</p>
+                                                <p className='my-2'>pontaria: {Math.floor(player.corpo.pontaria)}</p>
+                                                <p className='my-2'>destreza: {Math.floor(player.corpo.destreza)}</p>
+                                                <p className='my-2'>furtividade: {Math.floor(player.corpo.furtividade)}</p>
+                                                <p className='my-2'>mobilidade: {Math.floor(player.corpo.mobilidade)}</p>
+                                            </div>
                                         </div>
-                                        <h3 className='mb-0'>Interação</h3>
-                                        <div >
-                                            <p className='my-2'>persuasão: {Math.floor(player.interacao.persuasao)}</p>
-                                            <p className='my-2'>inteligência: {Math.floor(player.interacao.inteligencia)}</p>
-                                            <p className='my-2'>investigação: {Math.floor(player.interacao.investigacao)}</p>
-                                            <p className='my-2'>intuição: {Math.floor(player.interacao.intuicao)}</p>
-                                            <p className='my-2'>fé: {Math.floor(player.interacao.fe)}</p>
-                                            <p className='my-2'>performance: {Math.floor(player.interacao.performance)}</p>
+                                        <div>
+                                            <h3 className='mb-0'>Interação</h3>
+                                            <div >
+                                                <p className='my-2'>persuasão: {Math.floor(player.interacao.persuasao)}</p>
+                                                <p className='my-2'>inteligência: {Math.floor(player.interacao.inteligencia)}</p>
+                                                <p className='my-2'>investigação: {Math.floor(player.interacao.investigacao)}</p>
+                                                <p className='my-2'>intuição: {Math.floor(player.interacao.intuicao)}</p>
+                                                <p className='my-2'>fé: {Math.floor(player.interacao.fe)}</p>
+                                                <p className='my-2'>performance: {Math.floor(player.interacao.performance)}</p>
+                                            </div>
                                         </div>
                                     </CardGroup>
                                     <CardGroup id='Formacoes' className='col-md-6'>
-                                        {player.formacoes.map((item, i) => {
+                                        {/* {player.formacoes.map((item, i) => {
                                             return <div key={i}>
                                                 <h3>{item.nome}, {nivelFormacao[item.nivel]}</h3>
                                                 <div>
@@ -68,7 +72,7 @@ const Home = ({ content, setPage }) => {
                                                     <p className='my-2'>execução: {item.execucao}</p>
                                                 </div>
                                             </div>
-                                        })}
+                                        })} */}
                                     </CardGroup>
                                 </div>
                             </div>
