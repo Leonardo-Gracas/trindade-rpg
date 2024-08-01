@@ -5,6 +5,7 @@ import SetIdent from './SetIdent/SetIdent'
 import SetCorpoBase from './SetCorpoBase/SetCorpoBase'
 import SetInteracao from './SetInteracao/SetInteracao'
 import SetFormacoes from './SetFormacoes/SetFormacoes'
+import SetLevel from './SetLevel/SetLevel'
 
 
 function Creating({ setPage }) {
@@ -38,6 +39,7 @@ function Creating({ setPage }) {
 
     const phases = [
         <></>,
+        <SetLevel update={update} />,
         <SetIdent player={player} update={update} />,
         <SetMain player={player} update={update} rollback={rollback} />,
         <SetCorpoBase player={player} update={update} rollback={rollback} />,

@@ -9,10 +9,6 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         nivel: 0,
         competencia: "",
         habilidades: [
-            {
-                nome: "",
-                descricao: ""
-            }
         ]
     })
 
@@ -44,6 +40,10 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
 
         let newContent = content
         for (let i = 0; i < habilityCount; i++) {
+            if(habilityCount == 0){
+                continue
+            }
+
             newContent.habilidades[i] = {
                 nome: "",
                 descricao: ""
@@ -101,8 +101,6 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         }))
     }
 
-    console.log(content)
-
     return (
         <Modal show={show}>
             <ModalHeader closeButton onHide={handleClose}>
@@ -129,7 +127,7 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
                     {content.nivel == 0
                         ? true
                         : <>
-                            <div className='overflow-y-auto' style={{ height: '15rem' }}>
+                            <div className='overflow-y-auto px-2' style={{ height: '15rem' }}>
                                 <FormGroup className='mb-2'>
                                     <FormLabel>Competência:</FormLabel>
                                     <FormControl name='competencia' onChange={handleChange} />

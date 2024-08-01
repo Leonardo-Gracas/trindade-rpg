@@ -85,10 +85,10 @@ const SetCorpoBase = ({ player, update, rollback }) => {
                 corpo: {
                     ...final
                 },
-                hpTotal: hp,
-                hpAtual: hp,
-                esforcoTotal: esforco,
-                esforcoAtual: esforco,
+                hp: Math.floor(hp),
+                hpAtual: Math.floor(hp),
+                esforco: Math.floor(esforco),
+                esforcoAtual: Math.floor(esforco),
                 pericia: pericia
             }
         })

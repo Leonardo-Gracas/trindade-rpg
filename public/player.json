@@ -1,12 +1,17 @@
 {
+    "nivel": 0,
     "nome": "",
     "idade": 0,
     "descricao": "",
-    "hpTotal": 0,
+    "hp": 0,
     "hpAtual": 0,
-    "esforcoTotal": 0,
+    "esforco": 0,
     "esforcoAtual": 0,
     "pericia": 0,
+    "concentracao": 0,
+    "concentracaoAtual": 0,
+    "elevacao": 0,
+    "elevacaoAtual": 0,
     "main": {
         "estudo": 0,
         "atletismo": 0,
@@ -33,18 +38,14 @@
     },
     "interacao": {
         "persuasao": 0,
-        "inteligencia": 0,
         "investigacao": 0,
         "intuicao": 0,
         "fe": 0,
+        "inteligencia": 0,
         "performance": 0
     },
     "formacoes": [],
     "habilidades": [
-        {
-            "nome": "",
-            "descricao": ""
-        }
     ],
     "inventario": [
     ]

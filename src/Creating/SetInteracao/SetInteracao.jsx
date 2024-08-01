@@ -6,13 +6,16 @@ const SetInteracao = ({ player, update, rollback }) => {
     const [content, setContent] = useState({
         "total": player.main.presenca * 8,
         "persuasao": player.interacao.persuasao,
-        "inteligencia": player.interacao.inteligencia,
         "investigacao": player.interacao.investigacao,
         "intuicao": player.interacao.intuicao,
         "fe": player.interacao.fe,
+        "inteligencia": player.interacao.inteligencia,
         "performance": player.interacao.performance
     })
-    const titles = ['Persuasão', 'Inteligência', 'Investigação', 'Intuição', 'Fé', 'Performance']
+    const titles = ['Persuasão', 'Investigação', 'Intuição', 'Fé', 'Inteligência', 'Performance']
+
+    const concentracao = content.inteligencia + content.performance
+    const elevacao = content.fe + content.intuicao
 
     const totalPoints = Object.values(content).reduce((acc, curr) => acc + curr, 0) - content.total
     const maxPoints = content.total - totalPoints
@@ -76,6 +79,10 @@ const SetInteracao = ({ player, update, rollback }) => {
                 <CardBody className='mx-2 mb-1'>
                     <h4>Pontos disponíveis: {maxPoints}</h4>
                     {maxPoints < 0 ? <p className='text-danger'>Limite excedido</p> : false}
+                    <div className='d-flex flex-column'>
+                        <p>Concentração: {concentracao}</p>
+                        <p>Elevação: {elevacao}</p>
+                    </div>
                     <Form className='text-start'>
                         {
                             Object.keys(content).map((prop, i) => {

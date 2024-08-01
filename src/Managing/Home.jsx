@@ -30,10 +30,13 @@ const Home = ({ content, setPage }) => {
                     <CardBody className='text-start row pt-1 d-flex justify-content-center'>
                         <div className='row' id='attributes'>
                             <div className='col-3 d-flex flex-column pt-0 w-100'>
-                                <CardGroup id='Status' className='row mt-3'>
-                                    <h5 className='text-success col-4'>HP: {Math.floor(player.hpAtual)}/{Math.floor(player.hpTotal)}</h5>
-                                    <h5 className='text-primary col-4'>Esforço: {Math.floor(player.esforcoAtual)}/{Math.floor(player.esforcoTotal)}</h5>
-                                    <h5 className='text col-4'>Perícia: {player.pericia}</h5>
+                                <CardGroup id='Status' className='d-flex flex-wrap justify-content-between mt-3'>
+                                    <h5 className='text px-1'>HP: {player.hp}</h5>
+                                    <h5 className='text px-1'>Esforço: {player.esforco}</h5>
+                                    <h5 className='text px-1'>Perícia: {player.pericia}</h5>
+                                    <h5 className='text px-1'>Concentração: {player.concentracao}</h5>
+                                    <h5 className='text px-1'>Elevação: {player.elevacao}</h5>
+
                                 </CardGroup>
                                 <hr />
                                 <div className='row w-100'>

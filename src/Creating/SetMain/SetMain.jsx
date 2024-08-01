@@ -8,7 +8,7 @@ const SetMain = ({ player, update, rollback }) => {
     "atletismo": player.main.atletismo,
     "presenca": player.main.presenca
   })
-  const maxPoints = 6 - content.estudo - content.atletismo - content.presenca
+  const maxPoints = player.nivel - content.estudo - content.atletismo - content.presenca
 
   const handleChange = (e) => {
     let value = parseInt(e.target.value)

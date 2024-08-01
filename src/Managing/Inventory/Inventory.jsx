@@ -68,7 +68,7 @@ const Inventory = ({ player, setPlayer }) => {
   return (
     <>
       <div id='Inventory' className='d-flex flex-column justify-content-between'>
-        <div style={{ height: '40rem', minHeight: '80%', overflowY: 'auto' }}>
+        <div style={{ height: '30rem', minHeight: '70%', overflowY: 'auto' }}>
           {items}
         </div>
         <div style={{ height: '10%' }}>
