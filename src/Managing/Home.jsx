@@ -15,12 +15,12 @@ const Home = ({ content, setPage }) => {
     }
 
     const nivelFormacao = ["", "Iniciante", "Especialista", "Mestre"]
-
+    const nivelCompetenia = ["", "1d4", "1d6", "1d8"]
 
     return (
         <div className='row gy-3'>
             <div className='px-1 col-3' style={{ width: '28rem' }}>
-                <Card className='p-0 h-100'>
+                <Card className='p-0 pb-2 h-100'>
                     <CardHeader>
                         <div className='d-flex justify-content-between'>
                             <h2>{player.nome}, {player.idade}. {player.descricao}</h2>
@@ -62,19 +62,37 @@ const Home = ({ content, setPage }) => {
                                             </div>
                                         </div>
                                     </CardGroup>
-                                    <CardGroup id='Formacoes' className='col-md-6'>
-                                        {/* {player.formacoes.map((item, i) => {
-                                            return <div key={i}>
-                                                <h3>{item.nome}, {nivelFormacao[item.nivel]}</h3>
-                                                <div>
-                                                    <p className='my-2'>diagnóstico: {item.diagnostico}</p>
-                                                    <p className='my-2'>preparo: {item.preparo}</p>
-                                                    <p className='my-2'>execução: {item.execucao}</p>
-                                                </div>
-                                            </div>
-                                        })} */}
-                                    </CardGroup>
                                 </div>
+                            </div>
+                        </div>
+                    </CardBody>
+                </Card>
+            </div>
+            <div className='px-1 col-3' style={{ width: '28rem' }}>
+                <Card className='p-0'>
+                    <CardHeader>
+                        <div className='d-flex justify-content-between'>
+                            <h2>Formações</h2>
+                        </div>
+                    </CardHeader>
+                    <CardBody className='text-start row pt-1 d-flex justify-content-center'>
+                        <div className='row' id='attributes'>
+                            <div className='col-3 d-flex flex-column pt-0 w-100'>
+                                {player.formacoes.map((item, i) => {
+                                    return <div key={i}>
+                                        <h4>{item.nome}</h4>
+                                        <p>{nivelFormacao[item.nivel]}</p>
+                                        <p><strong>{item.competencia} {nivelCompetenia[item.nivel]}</strong></p>
+
+                                        {item.habilidades.map((hab, j) => {
+                                            return <div key={j}>
+                                                <strong>{hab.nome}</strong>
+                                                <p>{hab.descricao}</p>
+                                            </div>
+                                        })}
+                                        {i == player.formacoes.length - 1 ? true : <hr/>}
+                                    </div>
+                                })}
                             </div>
                         </div>
                     </CardBody>

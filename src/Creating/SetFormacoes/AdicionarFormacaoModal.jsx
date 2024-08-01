@@ -24,10 +24,6 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
             nivel: 0,
             competencia: "",
             habilidades: [
-                {
-                    nome: "",
-                    descricao: ""
-                }
             ]
         })
         close()
@@ -79,7 +75,7 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         update((prev) => ({
             ...newPlayer
         }))
-        close()
+        handleClose()
     }
 
     let options = [

@@ -33,7 +33,7 @@ function Creating({ setPage }) {
 
     const finish = () => {
         localStorage.setItem(player.nome, JSON.stringify(player))
-        setPage(0)
+        window.location.reload()
     }
 
     const phases = [
