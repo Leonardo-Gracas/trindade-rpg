@@ -30,6 +30,18 @@ const Home = ({ content, setPage }) => {
         setPage(0)
     }
 
+    const handleDownload = () => {
+        const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+            JSON.stringify(player)
+          )}`;
+          const link = document.createElement("a");
+          link.href = jsonString;
+          let fileName = player.nome + ".json"
+          link.download = fileName;
+      
+          link.click();
+    }
+
     const nivelFormacao = ["", "Iniciante", "Especialista", "Mestre"]
     const nivelCompetenia = ["", "1d4", "1d6", "1d8"]
 
@@ -38,8 +50,10 @@ const Home = ({ content, setPage }) => {
             <CarouselItem>
                 <div className='w-100 d-flex justify-content-center'>
                     <Card className='p-0 pb-2' >
-                        <CardHeader className='text-center'>
-                            <CardTitle>{player.nome}</CardTitle>
+                        <CardHeader className='row'>
+                            <div className='col-4'></div>
+                            <CardTitle  className='col-4 d-flex align-items-center justify-content-center'>{player.nome}</CardTitle>
+                            <div  className='col-4 text-end'><button onClick={handleDownload} className='btn btn-secondary'><i className="bi bi-download"></i></button></div>
                         </CardHeader>
                         <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ maxHeight: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>

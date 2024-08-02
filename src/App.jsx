@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Cookies from "universal-cookie"
-import { Tab, Tabs } from 'react-bootstrap'
+import { FormControl, Tab, Tabs } from 'react-bootstrap'
 import Creating from './Creating/Creating'
 import Home from './Managing/Home'
 
@@ -40,11 +40,31 @@ function App() {
   }
 
   const deletePlayer = (name) => {
-    if(confirm(`Deseja mesmo excluir o personagem "${name}" para sempre?`) == false){
+    if (confirm(`Deseja mesmo excluir o personagem "${name}" para sempre?`) == false) {
       return
     }
     localStorage.removeItem(name)
     window.location.reload()
+  }
+
+  const uploadPlayer = () => {
+    let a = document.createElement('input', { type: "file" })
+    a.type = 'file'
+
+    a.addEventListener('change', (e) => {
+      var reader = new FileReader();
+      reader.onload = onReaderLoad;
+      reader.readAsText(event.target.files[0]);
+    })
+    function onReaderLoad(event) {
+      console.log(event.target.result);
+      var obj = JSON.parse(event.target.result);
+
+      localStorage.setItem(obj.nome, JSON.stringify(obj))
+      window.location.reload()
+    }
+
+    a.click()
   }
 
   var pages = [
@@ -57,6 +77,13 @@ function App() {
           onClick={() => setPage(1)}>
           Criar novo personagem
         </button>
+        <button
+          className='btn btn-outline-light mb-3'
+          style={{ width: '20rem' }}
+          onClick={uploadPlayer}>
+          Upload <i className="bi bi-upload"></i>
+        </button>
+        <h3 className='mb-3'>Personagens</h3>
         {Object.keys(players).map((item, i) => {
           return <div className='d-flex' style={{ width: '20rem' }}>
             <button key={i}
