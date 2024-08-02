@@ -5,6 +5,22 @@ import Inventory from './Inventory/Inventory'
 import Carousel from 'react-bootstrap/Carousel';
 
 const Home = ({ content, setPage }) => {
+    // Checagem se é mobile
+    const [width, setWidth] = useState(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+    
+    const isMobile = width <= 768;
+
+    // Base
     const [player, setPlayer] = useState(cloneDeep(content))
 
     const handleClose = () => {
@@ -18,7 +34,7 @@ const Home = ({ content, setPage }) => {
     const nivelCompetenia = ["", "1d4", "1d6", "1d8"]
 
     return (
-        <Carousel interval={null} indicators={false} className='px-0'>
+        <Carousel interval={null} controls={!isMobile} indicators={false} className='px-0'>
             <CarouselItem>
                 <div className='w-100 d-flex justify-content-center'>
                     <Card className='p-0 pb-2' >

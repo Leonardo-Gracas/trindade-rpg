@@ -1,6 +1,24 @@
 {
     "armas": [
         {
+            "nome": "Arco Curto",
+            "categoria": 0,
+            "tipo": "Arco",
+            "peso": 0, 
+            "tamanho": 1, 
+            "uso": "pontaria",
+            "calcDamage": [
+                [
+                    "pontaria",
+                    0.5
+                ],
+                [
+                    "pericia",
+                    0.33
+                ]
+            ]
+        },
+        {
             "nome": "Lança Leve",
             "categoria": 0,
             "tipo": "Lâmina",
@@ -69,6 +87,24 @@
                 [
                     "pericia",
                     0.5
+                ]
+            ]
+        },
+        {
+            "nome": "Espada Grande",
+            "categoria": 0,
+            "tipo": "Lâmina",
+            "peso": 1, 
+            "tamanho": 2, 
+            "uso": "forca",
+            "calcDamage": [
+                [
+                    "forca",
+                    1
+                ],
+                [
+                    "pericia",
+                    1
                 ]
             ]
         },
