@@ -17,6 +17,7 @@ const Home = ({ content, setPage }) => {
     const nivelFormacao = ["", "Iniciante", "Especialista", "Mestre"]
     const nivelCompetenia = ["", "1d4", "1d6", "1d8"]
 
+    console.log(player)
     return (
         <div className='row gy-3'>
             <div className='px-1 col-3' style={{ width: '28rem' }}>

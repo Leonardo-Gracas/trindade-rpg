@@ -63,6 +63,8 @@ const SetInteracao = ({ player, update, rollback }) => {
         update((data) => {
             return {
                 ...data,
+                elevacao: elevacao,
+                concentracao: concentracao,
                 interacao: {
                     ...content
                 }
