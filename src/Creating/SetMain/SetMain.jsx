@@ -76,8 +76,8 @@ const SetMain = ({ player, update, rollback }) => {
           </Form>
         </CardBody>
       </Card>
-      <div className='d-flex justify-content-between mt-3 px-3 w-100'>
-        <button className='btn btn-outline-danger' style={{ width: '150px' }} onClick={rollback}>Retornar</button>
+      <div className='d-flex justify-content-between mt-3 w-100'>
+        <button className='btn btn-danger' style={{ width: '150px' }} onClick={rollback}>Retornar</button>
         <button className='btn btn-primary' style={{ width: '150px' }} onClick={handleSubmit}>Próximo</button>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import { cloneDeep } from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { Card, CardBody, CardGroup, CardHeader, CardText, CardTitle } from 'react-bootstrap'
+import { Card, CardBody, CardGroup, CardHeader, CardText, CardTitle, CarouselItem } from 'react-bootstrap'
 import Inventory from './Inventory/Inventory'
-import Print from '../Print/Print'
+import Carousel from 'react-bootstrap/Carousel';
 
 const Home = ({ content, setPage }) => {
     const [player, setPlayer] = useState(cloneDeep(content))
@@ -17,71 +17,60 @@ const Home = ({ content, setPage }) => {
     const nivelFormacao = ["", "Iniciante", "Especialista", "Mestre"]
     const nivelCompetenia = ["", "1d4", "1d6", "1d8"]
 
-    console.log(player)
     return (
-        <div className='row gy-3'>
-            <div className='px-1 col-3' style={{ width: '28rem' }}>
-                <Card className='p-0 pb-2 h-100'>
-                    <CardHeader>
-                        <div className='d-flex justify-content-between'>
-                            <h2>{player.nome}, {player.idade}. {player.descricao}</h2>
-                            <button className='btn-close pt-3' onClick={handleClose} />
-                        </div>
-                    </CardHeader>
-                    <CardBody className='text-start row pt-1 d-flex justify-content-center'>
-                        <div className='row' id='attributes'>
-                            <div className='col-3 d-flex flex-column pt-0 w-100'>
-                                <CardGroup id='Status' className='d-flex flex-wrap justify-content-between mt-3'>
-                                    <h5 className='text px-1'>HP: {player.hp}</h5>
-                                    <h5 className='text px-1'>Esforço: {player.esforco}</h5>
-                                    <h5 className='text px-1'>Perícia: {player.pericia}</h5>
-                                    <h5 className='text px-1'>Concentração: {player.concentracao}</h5>
-                                    <h5 className='text px-1'>Elevação: {player.elevacao}</h5>
-
-                                </CardGroup>
+        <Carousel interval={null} indicators={false} className='px-0'>
+            <CarouselItem>
+                <div className='w-100 d-flex justify-content-center'>
+                    <Card className='p-0 pb-2' >
+                        <CardHeader className='text-center'>
+                            <CardTitle>{player.nome}</CardTitle>
+                        </CardHeader>
+                        <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ maxHeight: '80vh' }}>
+                            <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
+                                <div className='d-flex flex-column'>
+                                    <div className='mb-3'>
+                                        <h5>{player.nome}, {player.descricao}</h5>
+                                        <h6>Nível: {player.nivel}</h6>
+                                    </div>
+                                    <h6>Atletismo: {player.main.atletismo} - Estudo: {player.main.estudo} - Presença: {player.main.presenca}</h6>
+                                    <h6>Manuseio: {player.pericia}</h6>
+                                </div>
+                                <hr></hr>
+                                <div id='Status' className='row'>
+                                    <h6 className='text col-6'>HP: {player.hp}</h6>
+                                    <h6 className='text col-6'>Esforço: {player.esforco}</h6>
+                                    <h6 className='text col-6'>Concentração: {player.concentracao}</h6>
+                                    <h6 className='text col-6'>Elevação: {player.elevacao}</h6>
+                                </div>
                                 <hr />
-                                <div className='row w-100'>
-                                    <CardGroup id='Corpo' className='d-flex justify-content-between mb-3'>
-                                        <div>
-                                            <h3 className='mb-0'>Corpo</h3>
-                                            <div className='mb-3'>
-                                                <p className='my-2'>força: {Math.floor(player.corpo.forca)}</p>
-                                                <p className='my-2'>resistência: {Math.floor(player.corpo.resistencia)}</p>
-                                                <p className='my-2'>reflexo: {Math.floor(player.corpo.reflexo)}</p>
-                                                <p className='my-2'>pontaria: {Math.floor(player.corpo.pontaria)}</p>
-                                                <p className='my-2'>destreza: {Math.floor(player.corpo.destreza)}</p>
-                                                <p className='my-2'>furtividade: {Math.floor(player.corpo.furtividade)}</p>
-                                                <p className='my-2'>mobilidade: {Math.floor(player.corpo.mobilidade)}</p>
-                                            </div>
+                                <div id='Corpo' className='row'>
+                                    <div className='col-6'>
+                                        <h4 className='mb-0'>Corpo</h4>
+                                        <div className='mb-3'>
+                                            <p className='my-2'>força: {Math.floor(player.corpo.forca)}</p>
+                                            <p className='my-2'>resistência: {Math.floor(player.corpo.resistencia)}</p>
+                                            <p className='my-2'>reflexo: {Math.floor(player.corpo.reflexo)}</p>
+                                            <p className='my-2'>pontaria: {Math.floor(player.corpo.pontaria)}</p>
+                                            <p className='my-2'>destreza: {Math.floor(player.corpo.destreza)}</p>
+                                            <p className='my-2'>furtividade: {Math.floor(player.corpo.furtividade)}</p>
+                                            <p className='my-2'>mobilidade: {Math.floor(player.corpo.mobilidade)}</p>
                                         </div>
-                                        <div>
-                                            <h3 className='mb-0'>Interação</h3>
-                                            <div >
-                                                <p className='my-2'>persuasão: {Math.floor(player.interacao.persuasao)}</p>
-                                                <p className='my-2'>inteligência: {Math.floor(player.interacao.inteligencia)}</p>
-                                                <p className='my-2'>investigação: {Math.floor(player.interacao.investigacao)}</p>
-                                                <p className='my-2'>intuição: {Math.floor(player.interacao.intuicao)}</p>
-                                                <p className='my-2'>fé: {Math.floor(player.interacao.fe)}</p>
-                                                <p className='my-2'>performance: {Math.floor(player.interacao.performance)}</p>
-                                            </div>
+                                    </div>
+                                    <div className='col-6'>
+                                        <h4 className='mb-0'>Interação</h4>
+                                        <div >
+                                            <p className='my-2'>persuasão: {Math.floor(player.interacao.persuasao)}</p>
+                                            <p className='my-2'>inteligência: {Math.floor(player.interacao.inteligencia)}</p>
+                                            <p className='my-2'>investigação: {Math.floor(player.interacao.investigacao)}</p>
+                                            <p className='my-2'>intuição: {Math.floor(player.interacao.intuicao)}</p>
+                                            <p className='my-2'>fé: {Math.floor(player.interacao.fe)}</p>
+                                            <p className='my-2'>performance: {Math.floor(player.interacao.performance)}</p>
                                         </div>
-                                    </CardGroup>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </CardBody>
-                </Card>
-            </div>
-            <div className='px-1 col-3' style={{ width: '28rem' }}>
-                <Card className='p-0'>
-                    <CardHeader>
-                        <div className='d-flex justify-content-between'>
-                            <h2>Formações</h2>
-                        </div>
-                    </CardHeader>
-                    <CardBody className='text-start row pt-1 d-flex justify-content-center'>
-                        <div className='row' id='attributes'>
-                            <div className='col-3 d-flex flex-column pt-0 w-100'>
+                            <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
+                                <h2>Formações</h2>
                                 {player.formacoes.map((item, i) => {
                                     return <div key={i}>
                                         <h4>{item.nome}</h4>
@@ -94,25 +83,29 @@ const Home = ({ content, setPage }) => {
                                                 <p>{hab.descricao}</p>
                                             </div>
                                         })}
-                                        {i == player.formacoes.length - 1 ? true : <hr/>}
+                                        {i == player.formacoes.length - 1 ? true : <hr />}
                                     </div>
                                 })}
                             </div>
                         </div>
-                    </CardBody>
-                </Card>
-            </div>
-            <div className='px-1 col-3' style={{ width: '28rem', height: '50rem' }}>
-                <Card className='p-0 h-100'>
-                    <CardHeader>
-                        <h2>Inventário</h2>
-                    </CardHeader>
-                    <CardBody className='text-start row pt-1'>
-                        <Inventory player={player} setPlayer={setPlayer} />
-                    </CardBody>
-                </Card>
-            </div>
-        </div>
+                    </Card>
+                </div>
+            </CarouselItem>
+            <CarouselItem>
+                <div className='w-100 d-flex justify-content-center'>
+                    <Card className='p-0 pb-2 w-auto'>
+                        <CardHeader className='text-center'>
+                            <CardTitle>Inventário</CardTitle>
+                        </CardHeader>
+                        <div className='text-start justify-content-center row p-3 overflow-hidden' style={{ maxHeight: '80vh' }}>
+                            <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
+                                <Inventory player={player} setPlayer={setPlayer} />
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </CarouselItem>
+        </Carousel>
     )
 }
 

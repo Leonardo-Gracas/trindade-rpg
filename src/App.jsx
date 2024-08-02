@@ -48,11 +48,11 @@ function App() {
   }
 
   var pages = [
-    <div className='w-100 h-100 d-flex flex-column justify-content-center'>
+    <div className='w-100 h-100 d-flex flex-column text-light justify-content-center'>
       <h1>RPG Trindade</h1>
       <div className='d-flex flex-column align-items-center mt-5'>
         <button
-          className='btn btn-outline-dark mb-3'
+          className='btn btn-outline-light mb-3'
           style={{ width: '20rem' }}
           onClick={() => setPage(1)}>
           Criar novo personagem
@@ -60,7 +60,7 @@ function App() {
         {Object.keys(players).map((item, i) => {
           return <div className='d-flex' style={{ width: '20rem' }}>
             <button key={i}
-              className='btn btn-outline-dark mb-3 w-100'
+              className='btn btn-outline-light mb-3 w-100'
               onClick={() => openTab(players[item])}
             >
               {players[item].nome}

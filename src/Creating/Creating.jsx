@@ -49,7 +49,7 @@ function Creating({ setPage }) {
 
     return (
         <>
-            <div className='mb-5 d-flex justify-content-center'>
+            <div className='mb-5 d-flex justify-content-center text-light'>
                 <h1>Trindade</h1>
                 <button onClick={() => setPage(0)} className='btn btn-close' style={{transform: 'translatex(2rem)'}}></button>
             </div>

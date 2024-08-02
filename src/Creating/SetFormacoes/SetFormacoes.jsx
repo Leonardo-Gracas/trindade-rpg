@@ -58,7 +58,7 @@ const SetFormacoes = ({ player, update, rollback, finish }) => {
                     Adicionar formação
                 </button>
             </div>
-            <button className='btn btn-outline-success mt-3' onClick={finish}>Finalizar</button>
+            <button className='btn btn-success mt-3' onClick={finish}>Finalizar</button>
             <AdicionarFormacaoModal close={handleClose} player={player} show={show} update={update} />
         </div>
     )

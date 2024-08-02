@@ -67,13 +67,13 @@ const Inventory = ({ player, setPlayer }) => {
 
   return (
     <>
-      <div id='Inventory' className='d-flex flex-column justify-content-between'>
-        <div style={{ height: '30rem', minHeight: '70%', overflowY: 'auto' }}>
+      <div id='Inventory' className='d-flex flex-column justify-content-between overflow-hidden'>
+        <div style={{ height: '70vh', overflowY: 'auto' }}>
           {items}
         </div>
-        <div style={{ height: '10%' }}>
-          <hr className='mt-0' />
-          <button className='btn btn-success w-100' style={{ height: '40px' }} onClick={() => setShow(true)}>Adicionar</button>
+        <div>
+          <hr className='mt-0 mb-2' />
+          <button className='btn btn-success w-100' onClick={() => setShow(true)}>Adicionar</button>
         </div>
       </div>
       <AddItemModal show={show} setShow={setShow} describer={describer} addItem={addItem} />
