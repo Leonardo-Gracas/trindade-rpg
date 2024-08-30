@@ -7,7 +7,7 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
     const [content, setContent] = useState({
         nome: "",
         nivel: 0,
-        competencia: "",
+        competencia: [],
         habilidades: [
         ]
     })
@@ -18,7 +18,7 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         setContent({
             nome: "",
             nivel: 0,
-            competencia: "",
+            competencia: [],
             habilidades: [
             ]
         })
@@ -32,28 +32,11 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
             e.target.value = maxLevel
             return
         }
-        let total = 2 * player.main.estudo + value + 3
 
-        e.target.disabled = true
-
-        const habilityCount = (value - 1) * 2
-
-        let newContent = content
-        for (let i = 0; i < habilityCount; i++) {
-            if(habilityCount == 0){
-                continue
-            }
-
-            newContent.habilidades[i] = {
-                nome: "",
-                descricao: ""
-            }
-        }
-
-        setContent({
-            ...newContent,
+        setContent(prev => ({
+            ...prev,
             nivel: value
-        })
+        }))
     }
 
     const handleChange = (e) => {
@@ -68,6 +51,11 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if(content.nivel == 0){
+            toast.error("Selecione um nível pra formação")
+            return
+        }
 
         let newPlayer = player
         newPlayer.formacoes.push(content)
@@ -84,8 +72,6 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
         <option value={2}>Especialista</option>,
         <option value={3}>Mestre</option>,
     ]
-
-    var habilityForms = []
 
     const handleHabilityChange = (e, index) => {
         let name = e.target.name
@@ -124,32 +110,11 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
                             }
                         </FormSelect>
                     </FormGroup>
-                    {content.nivel == 0
-                        ? true
-                        : <>
-                            <div className='overflow-y-auto px-2' style={{ height: '15rem' }}>
-                                <FormGroup className='mb-2'>
-                                    <FormLabel>Competência:</FormLabel>
-                                    <FormControl name='competencia' onChange={handleChange} />
-                                </FormGroup>
-                                <FormLabel>Habilidades:</FormLabel>
-                                {content.habilidades.map((item, key) => {
-                                    return <FormGroup className='mb-1' key={key}>
-                                        <FormLabel>Nome</FormLabel>
-                                        <FormControl name='nome' value={item.nome} onChange={(e) => handleHabilityChange(e, key)} />
-                                        <FormLabel>Descrição</FormLabel>
-                                        <FormControl as={'textarea'} value={item.descricao} name='descricao' onChange={(e) => handleHabilityChange(e, key)} />
-                                    </FormGroup>
-                                })}
-                            </div>
-                            <div className='text-end pt-3'>
-                                <button className='btn btn-primary' type='submit'>Adicionar</button>
-                            </div>
-                        </>
-                    }
+                    <div className='text-end pt-3'>
+                        <button className='btn btn-primary' type='submit'>Adicionar</button>
+                    </div>
                 </Form>
             </ModalBody>
-
         </Modal>
     )
 }

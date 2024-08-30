@@ -57,7 +57,7 @@ const SetMain = ({ player, update, rollback }) => {
         <CardHeader>
           <CardTitle>Trindade</CardTitle>
         </CardHeader>
-        <CardBody className='mx-2 mb-1'>
+        <CardBody className='mx-2'>
           <h4>Pontos disponíveis: {maxPoints}</h4>
           {maxPoints < 0 ? <p className='text-danger'>Limite excedido</p> : false}
           <Form className='text-start'>
@@ -69,7 +69,7 @@ const SetMain = ({ player, update, rollback }) => {
               <FormLabel>Atletismo (Governa os atributos físicos e motores do personagem)</FormLabel>
               <FormControl required type='number' name='atletismo' placeholder='Atletismo' onChange={handleChange} defaultValue={content.atletismo} />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className='mb-3'>
               <FormLabel>Presença (Governa as competências sociais, intelectuais e mágicas do personagem)</FormLabel>
               <FormControl required type='number' name='presenca' placeholder='Presença' onChange={handleChange} defaultValue={content.presenca} />
             </FormGroup>

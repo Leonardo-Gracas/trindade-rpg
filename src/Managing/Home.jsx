@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { Card, CardBody, CardGroup, CardHeader, CardText, CardTitle, CarouselItem } from 'react-bootstrap'
+import { Card, CardBody, CardGroup, CardHeader, CardText, CardTitle, CarouselItem, Modal, ModalHeader } from 'react-bootstrap'
 import Inventory from './Inventory/Inventory'
 import Carousel from 'react-bootstrap/Carousel';
 
@@ -17,7 +17,7 @@ const Home = ({ content, setPage }) => {
             window.removeEventListener('resize', handleWindowSizeChange);
         }
     }, []);
-    
+
     const isMobile = width <= 768;
 
     // Base
@@ -33,13 +33,13 @@ const Home = ({ content, setPage }) => {
     const handleDownload = () => {
         const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
             JSON.stringify(player)
-          )}`;
-          const link = document.createElement("a");
-          link.href = jsonString;
-          let fileName = player.nome + ".json"
-          link.download = fileName;
-      
-          link.click();
+        )}`;
+        const link = document.createElement("a");
+        link.href = jsonString;
+        let fileName = player.nome + ".json"
+        link.download = fileName;
+
+        link.click();
     }
 
     const nivelFormacao = ["", "Iniciante", "Especialista", "Mestre"]
@@ -49,16 +49,16 @@ const Home = ({ content, setPage }) => {
         <Carousel interval={null} controls={!isMobile} indicators={false} className='px-0'>
             <CarouselItem>
                 <div className='w-100 d-flex justify-content-center'>
-                    <Card className='p-0 pb-2' >
+                    <Card className='p-0' >
                         <CardHeader className='row'>
                             <div className='col-4'></div>
-                            <CardTitle  className='col-4 d-flex align-items-center justify-content-center'>{player.nome}</CardTitle>
-                            <div  className='col-4 text-end'><button onClick={handleDownload} className='btn btn-secondary'><i className="bi bi-download"></i></button></div>
+                            <CardTitle className='col-4 d-flex align-items-center justify-content-center'>{player.nome}</CardTitle>
+                            <div className='col-4 text-end'><button onClick={handleDownload} className='btn btn-secondary'><i className="bi bi-download"></i></button></div>
                         </CardHeader>
                         <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ maxHeight: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
                                 <div className='d-flex flex-column'>
-                                    <div className='mb-3'>
+                                    <div className='mb-2'>
                                         <h5>{player.nome}, {player.descricao}</h5>
                                         <h6>Nível: {player.nivel}</h6>
                                     </div>
@@ -99,24 +99,6 @@ const Home = ({ content, setPage }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
-                                <h2>Formações</h2>
-                                {player.formacoes.map((item, i) => {
-                                    return <div key={i}>
-                                        <h4>{item.nome}</h4>
-                                        <p>{nivelFormacao[item.nivel]}</p>
-                                        <p><strong>{item.competencia} {nivelCompetenia[item.nivel]}</strong></p>
-
-                                        {item.habilidades.map((hab, j) => {
-                                            return <div key={j}>
-                                                <strong>{hab.nome}</strong>
-                                                <p>{hab.descricao}</p>
-                                            </div>
-                                        })}
-                                        {i == player.formacoes.length - 1 ? true : <hr />}
-                                    </div>
-                                })}
-                            </div>
                         </div>
                     </Card>
                 </div>
@@ -130,6 +112,41 @@ const Home = ({ content, setPage }) => {
                         <div className='text-start justify-content-center row p-3 overflow-hidden' style={{ maxHeight: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
                                 <Inventory player={player} setPlayer={setPlayer} />
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </CarouselItem>
+            <CarouselItem>
+                <div className='w-100 d-flex justify-content-center'>
+                    <Card className='p-0 pb-2' >
+                        <CardHeader className='d-flex justify-content-center'>
+                            <CardTitle>Formações</CardTitle>
+                        </CardHeader>
+                        <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ maxHeight: '80vh' }}>
+                            <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
+                                {player.formacoes.map((item, i) => {
+                                    return <div key={i}>
+                                        <div className='w-100 d-flex justify-content-between'>
+                                            <h4>{item.nome}</h4>
+                                            <button className='btn btn-outline-secondary'><i class="bi bi-pencil"></i></button>
+                                        </div>
+                                        <p>{nivelFormacao[item.nivel]}, {nivelCompetenia[item.nivel]}</p>
+
+                                        {item.competencia.map((comp, j) => {
+                                            return <p><strong>{item.competencia}</strong></p>
+                                        })}
+
+                                        {item.habilidades.map((hab, j) => {
+                                            return <div key={j}>
+                                                <strong>{hab.nome}</strong>
+                                                <p>{hab.descricao}</p>
+                                            </div>
+                                        })}
+                                        {i == player.formacoes.length - 1 ? true : <hr />}
+                                        
+                                    </div>
+                                })}
                             </div>
                         </div>
                     </Card>

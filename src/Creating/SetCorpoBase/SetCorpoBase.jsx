@@ -100,7 +100,7 @@ const SetCorpoBase = ({ player, update, rollback }) => {
                 <CardHeader>
                     <CardTitle>Corpo Base</CardTitle>
                 </CardHeader>
-                <CardBody className='mx-2 mb-1'>
+                <CardBody className='mx-2'>
                     <h4>Pontos disponíveis: {maxPoints}</h4>
                     <p className='text-secondary'>Cada ponto distribuido em um atributo passa 0.5 para cada atributo adjacente</p>
                     {maxPoints < 0 ? <p className='text-danger'>Limite excedido</p> : false}
