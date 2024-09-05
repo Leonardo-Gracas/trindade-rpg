@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardBody, CardGroup, CardHeader, CardText, CardTitle, CarouselItem, Modal, ModalHeader } from 'react-bootstrap'
 import Inventory from './Inventory/Inventory'
 import Carousel from 'react-bootstrap/Carousel';
+import Skills from './Skills/Skills';
 
 const Home = ({ content, setPage }) => {
     // Checagem se é mobile
@@ -42,20 +43,15 @@ const Home = ({ content, setPage }) => {
         link.click();
     }
 
-    const nivelFormacao = ["", "Iniciante", "Especialista", "Mestre"]
-    const nivelCompetenia = ["", "1d4", "1d6", "1d8"]
-
     return (
         <Carousel interval={null} controls={!isMobile} indicators={false} className='px-0'>
             <CarouselItem>
                 <div className='w-100 d-flex justify-content-center'>
-                    <Card className='p-0' >
-                        <CardHeader className='row'>
-                            <div className='col-4'></div>
-                            <CardTitle className='col-4 d-flex align-items-center justify-content-center'>{player.nome}</CardTitle>
-                            <div className='col-4 text-end'><button onClick={handleDownload} className='btn btn-secondary'><i className="bi bi-download"></i></button></div>
+                    <Card className='p-0 pb-2' >
+                        <CardHeader>
+                            <CardTitle>{player.nome}</CardTitle>
                         </CardHeader>
-                        <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ maxHeight: '80vh' }}>
+                        <div className='text-start justify-content-center row p-3 overflow-y-auto' style={{ height: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
                                 <div className='d-flex flex-column'>
                                     <div className='mb-2'>
@@ -99,6 +95,9 @@ const Home = ({ content, setPage }) => {
                                     </div>
                                 </div>
                             </div>
+                            <div className='text-end mt-auto'>
+                                <button onClick={handleDownload} className='btn btn-secondary'><i className="bi bi-download"></i></button>
+                            </div>
                         </div>
                     </Card>
                 </div>
@@ -109,7 +108,7 @@ const Home = ({ content, setPage }) => {
                         <CardHeader className='text-center'>
                             <CardTitle>Inventário</CardTitle>
                         </CardHeader>
-                        <div className='text-start justify-content-center row p-3 overflow-hidden' style={{ maxHeight: '80vh' }}>
+                        <div className='text-start justify-content-center row p-3 overflow-hidden' style={{ height: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
                                 <Inventory player={player} setPlayer={setPlayer} />
                             </div>
@@ -123,30 +122,9 @@ const Home = ({ content, setPage }) => {
                         <CardHeader className='d-flex justify-content-center'>
                             <CardTitle>Formações</CardTitle>
                         </CardHeader>
-                        <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ maxHeight: '80vh' }}>
+                        <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ height: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
-                                {player.formacoes.map((item, i) => {
-                                    return <div key={i}>
-                                        <div className='w-100 d-flex justify-content-between'>
-                                            <h4>{item.nome}</h4>
-                                            <button className='btn btn-outline-secondary'><i class="bi bi-pencil"></i></button>
-                                        </div>
-                                        <p>{nivelFormacao[item.nivel]}, {nivelCompetenia[item.nivel]}</p>
-
-                                        {item.competencia.map((comp, j) => {
-                                            return <p><strong>{item.competencia}</strong></p>
-                                        })}
-
-                                        {item.habilidades.map((hab, j) => {
-                                            return <div key={j}>
-                                                <strong>{hab.nome}</strong>
-                                                <p>{hab.descricao}</p>
-                                            </div>
-                                        })}
-                                        {i == player.formacoes.length - 1 ? true : <hr />}
-                                        
-                                    </div>
-                                })}
+                                <Skills player={player}/>
                             </div>
                         </div>
                     </Card>

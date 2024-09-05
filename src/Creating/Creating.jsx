@@ -6,6 +6,7 @@ import SetCorpoBase from './SetCorpoBase/SetCorpoBase'
 import SetInteracao from './SetInteracao/SetInteracao'
 import SetFormacoes from './SetFormacoes/SetFormacoes'
 import SetLevel from './SetLevel/SetLevel'
+import SetSkills from './SetSkills/SetSkills'
 
 
 function Creating({ setPage }) {
@@ -32,9 +33,8 @@ function Creating({ setPage }) {
         setIndex(index - 1)
     }
 
-    const finish = () => {
-        localStorage.setItem(player.nome, JSON.stringify(player))
-        window.location.reload()
+    const next = () => {
+        setIndex(index + 1)
     }
 
     const phases = [
@@ -44,8 +44,17 @@ function Creating({ setPage }) {
         <SetMain player={player} update={update} rollback={rollback} />,
         <SetCorpoBase player={player} update={update} rollback={rollback} />,
         <SetInteracao player={player} update={update} rollback={rollback} />,
-        <SetFormacoes player={player} update={(func) => setPlayer(prev => func(prev))} rollback={rollback} finish={finish} />
+        <SetFormacoes player={player} update={(func) => setPlayer(prev => func(prev))} rollback={rollback} finish={next} />,
+        <SetSkills player={player} update={update} rollback={rollback} />
     ]
+
+    useEffect(() => {
+        console.log(index)
+        if(index == 8){
+            localStorage.setItem(player.nome, JSON.stringify(player))
+            window.location.reload()
+        }
+    }, [index])
 
     return (
         <>

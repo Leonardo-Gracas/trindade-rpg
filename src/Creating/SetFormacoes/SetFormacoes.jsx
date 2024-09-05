@@ -19,12 +19,11 @@ const SetFormacoes = ({ player, update, rollback, finish }) => {
         let newContent = content
         newContent.splice(index, 1)
         setContent(newContent)
-        update(prev => {
+        update(data => {
             return {
-                ...prev,
+                ...data,
                 formacoes: newContent
             }
-
         })
     }
 
@@ -66,7 +65,7 @@ const SetFormacoes = ({ player, update, rollback, finish }) => {
                     </div>
                 </CardBody>
             </Card>
-            <button className='btn btn-success mt-3' onClick={finish}>Finalizar</button>
+            <button className='btn btn-success mt-3' onClick={finish}>Próximo</button>
             <AdicionarFormacaoModal close={handleClose} player={player} show={show} update={update} />
         </div>
     )
