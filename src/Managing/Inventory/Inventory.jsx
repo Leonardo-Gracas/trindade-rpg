@@ -32,6 +32,7 @@ const Inventory = ({ player, setPlayer }) => {
         setDescriber(data)
       })
   }, [])
+  
   useEffect(() => {
     if (describer == undefined) {
       return

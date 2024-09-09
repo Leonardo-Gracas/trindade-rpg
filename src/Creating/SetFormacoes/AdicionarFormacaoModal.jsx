@@ -7,7 +7,6 @@ const AdicionarFormacaoModal = ({ player, update, show, close }) => {
     const [content, setContent] = useState({
         nome: "",
         nivel: 0,
-        competencia: [],
         habilidades: [
         ]
     })

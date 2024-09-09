@@ -23,6 +23,10 @@ const Home = ({ content, setPage }) => {
 
     // Base
     const [player, setPlayer] = useState(cloneDeep(content))
+    
+    useEffect(() => {
+        localStorage.setItem(player.nome, JSON.stringify(player))
+    }, [player])
 
     const handleClose = () => {
         if (confirm("Deseja voltar ao menu inicial?") == false) {
@@ -124,7 +128,7 @@ const Home = ({ content, setPage }) => {
                         </CardHeader>
                         <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ height: '80vh' }}>
                             <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
-                                <Skills player={player}/>
+                                <Skills player={player} setPlayer={setPlayer}/>
                             </div>
                         </div>
                     </Card>
