@@ -5,6 +5,7 @@ import Cookies from "universal-cookie"
 import { FormControl, Tab, Tabs } from 'react-bootstrap'
 import Creating from './Creating/Creating'
 import Home from './Managing/Home'
+import Manual from './Manual/Manual'
 
 
 function App() {
@@ -74,19 +75,28 @@ function App() {
         <button
           className='btn btn-outline-light mb-3'
           style={{ width: '20rem' }}
+          key={0}
           onClick={() => setPage(1)}>
-          Criar novo personagem
+          <i className="bi bi-plus-circle"></i> Criar novo personagem
         </button>
         <button
           className='btn btn-outline-light mb-3'
           style={{ width: '20rem' }}
+          key={1}
           onClick={uploadPlayer}>
-          Upload <i className="bi bi-upload"></i>
+          <i className="bi bi-upload"></i> Upload
+        </button>
+        <button
+          className='btn btn-outline-light mb-3'
+          style={{ width: '20rem' }}
+          key={2}
+          onClick={() => setPage(3)}>
+          <i className="bi bi-question-circle"></i> Manual
         </button>
         <h3 className='mb-3'>Personagens</h3>
         {Object.keys(players).map((item, i) => {
-          return <div className='d-flex' style={{ width: '20rem' }}>
-            <button key={i}
+          return <div key={i} className='d-flex' style={{ width: '20rem' }}>
+            <button
               className='btn btn-outline-light mb-3 w-100'
               onClick={() => openTab(players[item])}
             >
@@ -98,7 +108,8 @@ function App() {
       </div>
     </div>,
     <Creating setPage={updatePage} />,
-    openUser
+    openUser,
+    <Manual />
   ]
 
   const openTab = (player) => {

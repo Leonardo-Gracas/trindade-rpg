@@ -23,7 +23,7 @@ const Home = ({ content, setPage }) => {
 
     // Base
     const [player, setPlayer] = useState(cloneDeep(content))
-    
+
     useEffect(() => {
         localStorage.setItem(player.nome, JSON.stringify(player))
     }, [player])
@@ -126,11 +126,14 @@ const Home = ({ content, setPage }) => {
                         <CardHeader className='d-flex justify-content-center'>
                             <CardTitle>Formações</CardTitle>
                         </CardHeader>
-                        <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ height: '80vh' }}>
-                            <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
-                                <Skills player={player} setPlayer={setPlayer}/>
+                        <CardBody className='p-0 pe-3'>
+                            <div className='text-start justify-content-center row p-3 overflow-y-auto overflow-x-hidden' style={{ height: '80vh' }}>
+                                <div className='col-md-3 d-flex flex-column' style={{ width: '24rem' }}>
+                                    <Skills player={player} setPlayer={setPlayer} />
+                                </div>
                             </div>
-                        </div>
+                        </CardBody>
+
                     </Card>
                 </div>
             </CarouselItem>

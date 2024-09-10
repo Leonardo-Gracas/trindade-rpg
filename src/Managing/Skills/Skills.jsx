@@ -86,41 +86,40 @@ const Skills = ({ player, setPlayer }) => {
     }
 
     return (
-        <>
-            <div className='d-flex flex-column'>
-                {player.formacoes.map((item, i) => {
-                    return <div key={i}>
+        <div className='overflow-hidden'>
+            {player.formacoes.map((item, i) => {
+                return <div key={i}>
+                    <div className='w-100 d-flex justify-content-between'>
+                        <h4>{item.nome}</h4>
+                        <button className='btn btn-outline-secondary border-0' onClick={() => handleEditFormacoes(i)}><i class="bi bi-pencil"></i></button>
+                    </div>
+                    <p>{nivelFormacao[item.nivel]}, {nivelCompetenia[item.nivel]}</p>
+
+                </div>
+            })}
+            <div className='w-100 text-end'>
+                <button className='btn btn-outline-success' onClick={handleAddFormacao}>Adicionar formação</button>
+            </div>
+            <hr />
+            <h4 className='text-center'>Habilidades</h4>
+            <hr />
+            {player.habilidades.map((item, i) => {
+                return <div>
+                    <div className='text-start mb-3' key={i}>
                         <div className='w-100 d-flex justify-content-between'>
                             <h4>{item.nome}</h4>
-                            <button className='btn btn-outline-secondary border-0' onClick={() => handleEditFormacoes(i)}><i class="bi bi-pencil"></i></button>
+                            <button className='btn btn-outline-secondary border-0' onClick={() => handleEditSkills(i)}><i class="bi bi-pencil"></i></button>
                         </div>
-                        <p>{nivelFormacao[item.nivel]}, {nivelCompetenia[item.nivel]}</p>
-                        
+                        <p style={{ whiteSpace: 'pre-wrap' }}>{item.descricao}</p>
                     </div>
-                })}
-                <div className='w-100 text-end'>
-                    <button className='btn btn-outline-success' onClick={handleAddFormacao}>Adicionar formação</button>
                 </div>
-                <hr />
-                <h4></h4>
-                {player.habilidades.map((item, i) => {
-                    return <div>
-                        <div className='text-start mb-3' key={i}>
-                            <div className='w-100 d-flex justify-content-between'>
-                                <h4>{item.nome}</h4>
-                                <button className='btn btn-outline-secondary border-0' onClick={() => handleEditSkills(i)}><i class="bi bi-pencil"></i></button>
-                            </div>
-                            <p>{item.descricao}</p>
-                        </div>
-                    </div>
-                })
-                }
-                <div className='w-100 text-end'>
-                    <button className='btn btn-outline-success' onClick={handleAddSkill}>Adicionar Habilidade</button>
-                </div>
-                {editModal}
+            })
+            }
+            <div className='w-100 text-end'>
+                <button className='btn btn-outline-success' onClick={handleAddSkill}>Adicionar Habilidade</button>
             </div>
-        </>
+            {editModal}
+        </div>
     )
 }
 

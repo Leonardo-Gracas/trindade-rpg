@@ -47,7 +47,7 @@ const EditSkill = ({ model, canShow, close, save, del}) => {
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Descrição:</FormLabel>
-                        <FormControl as={"textarea"} name="descricao" required onChange={(e) => handleChange(e)} defaultValue={content.descricao} />
+                        <FormControl as={"textarea"} rows={4} name="descricao" required onChange={(e) => handleChange(e)} defaultValue={content.descricao} />
                     </FormGroup>
                 </Form>
                 <div className='w-100 text-end'>
