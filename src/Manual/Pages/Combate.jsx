@@ -42,10 +42,29 @@ const Combate = () => {
                 <li><strong>Projétil</strong> - Pontaria</li>
             </ul>
 
+            <h4>Dano:</h4>
+            <p>O dano de todas as armas é baseado nos atributos do personagem e em seu <em>Manuseio</em>. Armas como espadas fariam um cálculo entre <em>Manuseio</em> e <em>Destreza</em> para ter o dano final.</p>
+            <p>O cálculo de dano é individual à arma, gerando um valor inteiro (Arredondado pra baixo). Este valor é aplicado em uma tabela, que retorna o dado utilizado para dano. O valor entre parênteses indica o dano máximo da arma em um golpe sem considerar ações especiais.</p>
+            <ul>
+                <li><strong>0-2:</strong> 1 (1)</li>
+                <li><strong>3-6:</strong> 1d4 (4)</li>
+                <li><strong>7-10:</strong> 1d6 (6)</li>
+                <li><strong>11-14:</strong> 1d8 (8)</li>
+                <li><strong>15-18:</strong> 1d10 (10)</li>
+                <li><strong>19-22:</strong> 1d12 (12)</li>
+                <li><strong>23-26:</strong> 1d12 + 1d4 (12)</li>
+                <li><strong>27-32:</strong> 1d12 + 1d6 (12)</li>
+                <li><strong>33-36:</strong> 1d12 + 1d8 (14)</li>
+                <li><strong>37-40:</strong> 1d12 + 1d10 (14)</li>
+                <li><strong>41 ou mais:</strong> 2d12 (16)</li>
+            </ul>
+
+
+
             <h3>Ações Especiais</h3>
             <p>As armas também podem efetuar ações especiais ao custo de <em>Esforço</em> do jogador. Cada arma tem seu conjunto de ataques especiais definidos em sua descrição, junto com seu custo de esforço.</p>
 
-            <h4>Exemplos Básicos de Ações Especiais</h4>
+            <h4>Exemplos Básicos de Ações Especiais:</h4>
             <ul>
                 <li><strong>Ataque extra</strong> - Ataca mais uma vez.</li>
                 <li><strong>Ataque forte</strong> - Rola o dano do ataque duas vezes.</li>

@@ -5,7 +5,7 @@
     ],
     "damageRanges": [
         {
-            "min": 1,
+            "min": 0,
             "max": 2,
             "result": "1 (1)"
         },
