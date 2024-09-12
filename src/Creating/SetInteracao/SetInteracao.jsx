@@ -48,8 +48,6 @@ const SetInteracao = ({ player, update, rollback }) => {
     }
 
     const handleSubmit = () => {
-        // const totalPoints = Object.values(content).reduce((acc, curr) => acc + curr, 0) - content.total
-        // const maxPoints = content.total - totalPoints
 
         if (maxPoints < 0) {
             toast.error("O limite total de pontos foi excedido")

@@ -4,6 +4,7 @@ import { Card, CardBody, CardGroup, CardHeader, CardText, CardTitle, CarouselIte
 import Inventory from './Inventory/Inventory'
 import Carousel from 'react-bootstrap/Carousel';
 import Skills from './Skills/Skills';
+import UpgradeModal from './Upgrading/UpgradeModal';
 
 const Home = ({ content, setPage }) => {
     // Checagem se é mobile
@@ -23,6 +24,7 @@ const Home = ({ content, setPage }) => {
 
     // Base
     const [player, setPlayer] = useState(cloneDeep(content))
+    const [showUpgrade, setShowUpgrade] = useState(false)
 
     useEffect(() => {
         localStorage.setItem(player.nome, JSON.stringify(player))
@@ -45,6 +47,10 @@ const Home = ({ content, setPage }) => {
         link.download = fileName;
 
         link.click();
+    }
+
+    const Evoluir = () => {
+        setShowUpgrade(true)
     }
 
     return (
@@ -73,7 +79,7 @@ const Home = ({ content, setPage }) => {
                                     <h6 className='text col-6'>Elevação: {player.elevacao}</h6>
                                 </div>
                                 <hr />
-                                <div id='Corpo' className='row'>
+                                <div id='Corpo/Interação' className='row'>
                                     <div className='col-6'>
                                         <h4 className='mb-0'>Corpo</h4>
                                         <div className='mb-3'>
@@ -98,6 +104,8 @@ const Home = ({ content, setPage }) => {
                                         </div>
                                     </div>
                                 </div>
+                                <button onClick={Evoluir} className='btn btn-outline-dark border-0'>Evoluir</button>
+                                <UpgradeModal player={player} setPlayer={setPlayer} show={showUpgrade} setShow={setShowUpgrade} />
                             </div>
                             <div className='text-end mt-auto'>
                                 <button onClick={handleDownload} className='btn btn-secondary'><i className="bi bi-download"></i></button>
