@@ -6,12 +6,23 @@ const Magias = () => {
             <h2>Magias</h2>
             <p>Existem quatro classes de magias no sistema: <strong>Mundanas</strong>, <strong>Espirituais</strong>, <strong>Sagradas</strong> e <strong>de Sangue</strong>. Cada uma possui características e requisitos específicos para sua execução e aprendizado.</p>
 
+            <strong>Molde</strong>
+            <ul>
+                <li><strong>Nome:</strong></li>
+                <li><strong>Classes:</strong></li>
+                <li><strong>Atributo:</strong></li>
+                <li><strong>Descrição:</strong></li>
+            </ul>
+
+            <p>As classes de uma habilidade determinam quais formações devem impactar no uso dessas magias. Ao se tornar <strong>Mestre</strong> em alguma das classes em que a magia pertence, o custo de <em>Elevação</em> e/ou <em>Concentração</em> é diminuido ou zerado, dependendo da magia.</p>
+
+
             <h3>Magias Mundanas</h3>
             <p>As magias mundanas são executadas através de <strong>Inteligência</strong> ou <strong>Performance</strong>. Elas são magias específicas que quase qualquer pessoa pode aprender, desde que dedique tempo ao estudo e à prática. Incluem habilidades como alquimia, transmutação, telepatia e telecinese. Embora geralmente sejam de baixa potência, sua versatilidade e utilidade podem ser vastas se o conjurador souber utilizá-las de maneira criativa.</p>
 
             <h5>exemplo:</h5>
 
-            <p><strong>"Combusto"</strong></p>
+            <p className='mb-0'><strong>"Combusto"</strong></p>
             <ul>
                 <li><strong>Classe:</strong> Mundana</li>
                 <li><strong>Atributo:</strong> Performance</li>
@@ -23,7 +34,7 @@ const Magias = () => {
 
             <h5>exemplo:</h5>
 
-            <p><strong>"Eus Critium"</strong></p>
+            <p className='mb-0'><strong>"Eus Critium"</strong></p>
             <ul>
                 <li><strong>Classe:</strong> Espiritual</li>
                 <li><strong>Atributo:</strong> Intuição</li>

@@ -4,6 +4,7 @@ import Combate from './Pages/Combate'
 import Formações from './Pages/Formações'
 import Ficha from './Pages/Ficha'
 import Magias from './Pages/Magias'
+import Grimório from './Pages/Grimório'
 
 const Manual = () => {
     return (
@@ -24,6 +25,9 @@ const Manual = () => {
                     </Tab>
                     <Tab eventKey={3} title="Magias">
                         <Magias />
+                    </Tab>
+                    <Tab eventKey={4} title="Grimório">
+                        <Grimório />
                     </Tab>
                 </Tabs>
             </CardBody>
