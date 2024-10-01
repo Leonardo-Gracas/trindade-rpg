@@ -4,127 +4,71 @@
             "nome": "Arco Curto",
             "categoria": 0,
             "tipo": "Arco",
-            "peso": 0, 
-            "tamanho": 1, 
             "uso": "pontaria",
-            "calcDamage": [
-                [
-                    "pontaria",
-                    0.5
-                ],
-                [
-                    "pericia",
-                    0.33
-                ]
-            ]
+            "danoBase": 2,
+            "manuseioFract": 1,
+            "forcaFract": 0,
+            "furtividadeFract": 0
         },
         {
             "nome": "Lança Leve",
             "categoria": 0,
             "tipo": "Lâmina",
-            "peso": 0, 
-            "tamanho": 1, 
             "uso": "destreza",
-            "calcDamage": [
-                [
-                    "destreza",
-                    0.5
-                ],
-                [
-                    "pericia",
-                    0.33
-                ]
-            ]
+            "danoBase": 4,
+            "manuseioFract": 1,
+            "forcaFract": 0,
+            "furtividadeFract": 0
         },
         {
             "nome": "Adaga",
             "categoria": 0,
             "tipo": "Punhal",
-            "peso": 0, 
-            "tamanho": 0, 
             "uso": "furtividade",
-            "calcDamage": [
-                [
-                    "furtividade",
-                    0.33
-                ],
-                [
-                    "pericia",
-                    0.33
-                ]
-            ]
+            "danoBase": 1,
+            "manuseioFract": 2,
+            "forcaFract": 0,
+            "furtividadeFract": 2
         },
         {
             "nome": "Espada Média",
             "categoria": 0,
             "tipo": "Lâmina",
-            "peso": 1, 
-            "tamanho": 1, 
             "uso": "destreza",
-            "calcDamage": [
-                [
-                    "destreza",
-                    0.5
-                ],
-                [
-                    "pericia",
-                    0.5
-                ]
-            ]
+            "danoBase": 4,
+            "manuseioFract": 1,
+            "forcaFract": 0,
+            "furtividadeFract": 0
         },
         {
             "nome": "Clava",
             "categoria": 0,
             "tipo": "Martelo",
-            "peso": 2, 
-            "tamanho": 1, 
             "uso": "forca",
-            "calcDamage": [
-                [
-                    "forca",
-                    1
-                ],
-                [
-                    "pericia",
-                    0.5
-                ]
-            ]
+            "danoBase": 6,
+            "manuseioFract": 2,
+            "forcaFract": 1,
+            "furtividadeFract": 0
         },
         {
             "nome": "Espada Grande",
             "categoria": 0,
             "tipo": "Lâmina",
-            "peso": 1, 
-            "tamanho": 2, 
             "uso": "forca",
-            "calcDamage": [
-                [
-                    "forca",
-                    1
-                ],
-                [
-                    "pericia",
-                    1
-                ]
-            ]
+            "danoBase": 8,
+            "manuseioFract": 1,
+            "forcaFract": 2,
+            "furtividadeFract": 0
         },
         {
             "nome": "Martelo de Guerra",
             "categoria": 0,
             "tipo": "Martelo",
-            "peso": 2, 
-            "tamanho": 2, 
             "uso": "forca",
-            "calcDamage": [
-                [
-                    "forca",
-                    2
-                ],
-                [
-                    "pericia",
-                    0.5
-                ]
-            ]
+            "danoBase": 10,
+            "manuseioFract": 2,
+            "forcaFract": 1,
+            "furtividadeFract": 0
         }
     ],
     "utils": [

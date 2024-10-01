@@ -30,7 +30,7 @@ const AddItemModal = ({ show, setShow, describer, addItem }) => {
                             {items == undefined ? <></>
                                 : items.armas.map((item, i) => {
                                     return <div key={i} className='col-md-3 g-2'>
-                                        <AddArma item={item} describer={describer} add={addItem} />
+                                        <AddArma item={item} add={addItem} />
                                     </div>
                                 })}
                         </div>
